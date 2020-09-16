@@ -88,7 +88,13 @@ export default function Users(props) {
             <Table.Cell>{item.node_id}</Table.Cell>
             <Table.Cell>{item.id}</Table.Cell>
             <Table.Cell>
-              <a href="">Details</a> || <a href="">History</a>
+              <a href="" id="Nav-tab">
+                Details
+              </a>{' '}
+              |{' '}
+              <a href="" id="Nav-tab">
+                History
+              </a>
             </Table.Cell>
           </Table.Row>
         );
