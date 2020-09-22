@@ -72,10 +72,8 @@ class App extends Component {
             <div className="title-users">
               <h1 className="users-icon">
                 {' '}
-                <Icon name="users" size="large" /> GRole{' '}
+                <Icon name="users" size="large" /> GRole - Manage Genisis Access{' '}
               </h1>
-
-              <p className="icon-text"> - Manage Genisis Access</p>
 
               <nav className="Nav-style">
                 <div>
@@ -90,13 +88,13 @@ class App extends Component {
                   <Link id="Nav-tab">|</Link>
                   <Link to="/permissions" id="Nav-tab">
                     {' '}
-                    Roles-Permisions
+                    Permissions
                   </Link>
                 </div>
               </nav>
 
               <Input
-                id="search-button-style"
+                id="input-for-filter"
                 type="text"
                 icon="search"
                 size="mini"
@@ -105,7 +103,7 @@ class App extends Component {
               />
               <button
                 type="button"
-                id="btn-search"
+                id="btn-filter"
                 onClick={this.getSearchResult}
               >
                 Username Filter
