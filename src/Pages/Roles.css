@@ -1,0 +1,22 @@
+.item-selected {
+  font: arial;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.item-selected:hover {
+  font: arial;
+  font-size: 15px;
+  font-weight: 700;
+  color: black;
+  background-color: #eeeeee;
+  text-decoration: underline;
+}
+
+.item-selected:focus:active {
+  font: arial;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: blue;
+  text-decoration: underline;
+}

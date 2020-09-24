@@ -27,7 +27,7 @@ export default function Permissions(props) {
   });
 
   return (
-    <div>
+    <div className="maintable">
       <Table striped>
         <Table.Header>
           <Table.Row>

@@ -28,7 +28,7 @@
 }
 */
 
-.title-users {
+.header-line-settings {
   display: inline-flex;
   margin-top: 6px;
   margin-bottom: -7px;
@@ -83,7 +83,6 @@
   font-weight: 700;
   font-size: 20px;
   color: black;
-  /* background-color: #c9c9c9; */
   text-decoration: underline;
   margin-top: 15px;
   margin-right: 5px;
@@ -107,13 +106,12 @@
   border-color: white;
   margin-top: 1px;
   margin-bottom: 18px;
-  margin-left: 10px;
+  margin-left: 5px;
   margin-right: 10px;
   padding: 5px 10px;
-  position: absolute;
-  left: 0px;
   border-radius: 20px;
-  transform: translateX(1235px);
+  position: absolute;
+  right: 0px;
 }
 
 #input-for-filter {
@@ -123,11 +121,10 @@
   color: #333333;
   margin-top: 0px;
   margin-bottom: 15px;
-  margin-left: 60px;
+  margin-left: 55px;
   margin-right: 0px;
   border-color: #5b616b;
 }
-
 img {
   float: left;
   width: 15%;

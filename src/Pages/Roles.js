@@ -68,35 +68,67 @@ export default function Roles(props) {
 
   const panes = [
     {
-      menuItem: 'Systems Architect',
+      menuItem: (
+        <Menu.Item key="Systems Architect">
+          <p className="item-selected">Systems Architect</p>
+        </Menu.Item>
+      ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
     },
     {
-      menuItem: 'System Administrator',
+      menuItem: (
+        <Menu.Item key="System Administrator">
+          <p className="item-selected">System Administrator</p>
+        </Menu.Item>
+      ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
     },
     {
-      menuItem: 'Research Director',
+      menuItem: (
+        <Menu.Item key="Research Director">
+          <p className="item-selected">Research Director</p>
+        </Menu.Item>
+      ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
     },
     {
-      menuItem: 'Project Manager',
+      menuItem: (
+        <Menu.Item key="Project Manager">
+          <p className="item-selected">Project Manager</p>
+        </Menu.Item>
+      ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
     },
     {
-      menuItem: 'Web Developer',
+      menuItem: (
+        <Menu.Item key="Web Developer">
+          <p className="item-selected">Web Developer</p>
+        </Menu.Item>
+      ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
     },
     {
-      menuItem: 'VA MVP User',
+      menuItem: (
+        <Menu.Item key="VA MVP User">
+          <p className="item-selected">MVP User</p>
+        </Menu.Item>
+      ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
     },
     {
-      menuItem: 'VA non-MVP User',
+      menuItem: (
+        <Menu.Item key="VA Non-MVP User">
+          <p className="item-selected">VA User</p>
+        </Menu.Item>
+      ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
     },
     {
-      menuItem: 'Regular User',
+      menuItem: (
+        <Menu.Item key="Regular User">
+          <p className="item-selected">Non-VA User</p>
+        </Menu.Item>
+      ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
     },
   ];

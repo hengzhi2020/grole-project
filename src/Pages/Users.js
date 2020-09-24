@@ -1,4 +1,5 @@
 import React from 'react';
+import './Users.css';
 import {
   Table,
   Menu,
@@ -7,7 +8,6 @@ import {
   Button,
   Pagination,
 } from 'semantic-ui-react';
-import './Users.css';
 
 export default function Users(props) {
   // console.log("usersObj passing to User-componenent: ", props.usersObj);
@@ -109,7 +109,9 @@ export default function Users(props) {
       <Table celled selectable striped>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>User_ID</Table.HeaderCell>
+            <Table.HeaderCell>
+              <p className="table-header">User_ID</p>
+            </Table.HeaderCell>
             <Table.HeaderCell>User_Name</Table.HeaderCell>
             <Table.HeaderCell>User_Email</Table.HeaderCell>
             <Table.HeaderCell>User_Affiliation</Table.HeaderCell>

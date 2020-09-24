@@ -69,7 +69,7 @@ class App extends Component {
           </section>
 
           <section className="main-body">
-            <div className="title-users">
+            <div className="header-line-settings">
               <h1 className="users-icon">
                 {' '}
                 <Icon name="users" size="large" /> GRole - Manage Genisis Access{' '}
