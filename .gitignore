@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+# backend
+__pycache__
+GROLE_data.db
+
 # testing
 /coverage
 
