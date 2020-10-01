@@ -480,7 +480,7 @@ def delete_role_by_id(role_id):
 
 # Grant an existing privilege to a role
 # FIXME: since access_list - Priv is many-to-one, this can overwrite an existing role's association with priv!
-@app.route('/grole/api/v0.1/roles/priv/<int:role_id>/<int:priv_id>', methods=['PUT'])
+@app.route('/grole/api/v0.1/roles/privileges/<int:role_id>/<int:priv_id>', methods=['PUT'])
 def add_priv_to_role(role_id, priv_id):
     role = session.query(Role).filter(Role.id == role_id).first()
     if role is None:

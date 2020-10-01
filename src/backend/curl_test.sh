@@ -21,5 +21,5 @@ curl -i    http://localhost:4996/grole/api/v0.1/privileges/roles/3
 curl -i    http://localhost:4996/grole/api/v0.1/resources
 curl -i    http://localhost:4996/grole/api/v0.1/resources/2
 curl -i    http://localhost:4996/grole/api/v0.1/resources/users/2
-curl -X PUT    http://localhost:4996/grole/api/v0.1/roles/priv/4/5
+curl -X PUT    http://localhost:4996/grole/api/v0.1/roles/privileges/4/5
 
