@@ -1,13 +1,13 @@
 from app import *
 from models import *
 
-for u in session.query(User_g).all():
+for u in session.query(User).all():
     session.delete(u)
 
 session.commit()
 
 
-nu = User_g()
+nu = User()
 nu.username = "DJL1"
 nu.email = "d1@somewhere.com"
 #nu.va_nt_account = "vhabhsdjl1"
@@ -16,7 +16,7 @@ nu.type = "regular"
 
 session.add(nu)
 
-nu = User_g()
+nu = User()
 nu.username = "DJL2"
 nu.email = "d2@somewhere.com"
 #nu.va_nt_account = "vhabhsdjl2"
@@ -25,7 +25,7 @@ nu.type = "regular"
 
 session.add(nu)
 
-nu = User_g()
+nu = User()
 nu.username = "DJL3"
 nu.email = "d3@somewhere.com"
 #nu.va_nt_account = "vhabhsdjl3"
@@ -34,7 +34,7 @@ nu.type = "regular"
 
 session.add(nu)
 
-nu = User_g()
+nu = User()
 nu.username = "DJL4"
 nu.email = "d4@somewhere.com"
 #nu.va_nt_account = "vhabhsdjl4"
@@ -43,7 +43,7 @@ nu.type = "regular"
 
 session.add(nu)
 
-nu = User_g()
+nu = User()
 nu.username = "DJL5"
 nu.email = "d5@somewhere.com"
 #nu.va_nt_account = "vhabhsdjl5"
@@ -52,7 +52,7 @@ nu.type = "regular"
 
 session.add(nu)
 
-nu = User_g()
+nu = User()
 nu.username = "DJL6"
 nu.email = "d6@somewhere.com"
 #nu.va_nt_account = "vhabhsdjl6"
@@ -61,7 +61,7 @@ nu.type = "test_user"
 
 session.add(nu)
 
-nu = User_g()
+nu = User()
 nu.username = "DJL7"
 nu.email = "d7@somewhere.com"
 #nu.va_nt_account = "vhabhsdjl7"
@@ -73,12 +73,12 @@ session.add(nu)
 session.commit()
 
 
-for a in session.query(Account_g).all():
+for a in session.query(Account).all():
     session.delete(a)
 
 session.commit()
 
-na = Account_g()
+na = Account()
 na.type = "windows"
 na.va_nt_account = "vhabhsdjl1"
 na.uid = "00000-000-00000001"
@@ -88,7 +88,7 @@ na.user_id = 1
 
 session.add(na)
 
-na = Account_g()
+na = Account()
 na.type = "linux"
 na.va_nt_account = "vhabhsdjl2"
 na.uid = "00000-000-00000002"
@@ -98,7 +98,7 @@ na.user_id = 2
 
 session.add(na)
 
-na = Account_g()
+na = Account()
 na.type = "genisis"
 na.va_nt_account = "vhabhsdjl3"
 na.uid = "00000-000-00000003"
@@ -109,7 +109,7 @@ na.user_id = 2
 session.add(na)
 
 
-na = Account_g()
+na = Account()
 na.type = "genisis"
 na.va_nt_account = "vhabhsdjl4"
 na.uid = "00000-000-00000004"
@@ -119,7 +119,7 @@ na.user_id = 4
 
 session.add(na)
 
-na = Account_g()
+na = Account()
 na.type = "linux"
 na.va_nt_account = "vhabhsdjl5"
 na.uid = "00000-000-00000005"
@@ -129,7 +129,7 @@ na.user_id = 3
 
 session.add(na)
 
-na = Account_g()
+na = Account()
 na.type = "linux"
 na.va_nt_account = "vhabhsdjl6"
 na.uid = "00000-000-00000006"
@@ -138,7 +138,7 @@ na.updated_date = datetime(2020, 9, 9, 1, 0, 0)
 na.user_id = 6
 session.add(na)
 
-na = Account_g()
+na = Account()
 na.type = "netapp"
 na.va_nt_account = "vhabhsdjl7"
 na.uid = "00000-000-00000007"
@@ -147,7 +147,7 @@ na.updated_date = datetime(2020, 9, 9, 1, 0, 0)
 na.user_id = 6
 session.add(na)
 
-na = Account_g()
+na = Account()
 na.type = "HPC"
 na.va_nt_account = "vhabhsdjl8"
 na.uid = "00000-000-00000008"
@@ -156,7 +156,7 @@ na.updated_date = datetime(2020, 9, 9, 1, 0, 0)
 na.user_id = 6
 session.add(na)
 
-na = Account_g()
+na = Account()
 na.type = "HPC-limited"
 na.va_nt_account = "vhabhsdjl9"
 na.uid = "00000-000-00000009"
@@ -165,7 +165,7 @@ na.updated_date = datetime(2020, 9, 9, 1, 0, 0)
 na.user_id = 7
 session.add(na)
 
-na = Account_g()
+na = Account()
 na.type = "HPC-unlimited"
 na.va_nt_account = "vhabhsdjl10"
 na.uid = "00000-000-00000010"
@@ -185,37 +185,37 @@ session.commit()
 nr = Role()
 nr.name = "linux admin"
 nr.description = "project 1"
-nr.accounts = [session.query(Account_g)[1], session.query(Account_g)[4], session.query(Account_g)[5]]
+nr.accounts = [session.query(Account)[1], session.query(Account)[4], session.query(Account)[5]]
 session.add(nr)
 
 nr = Role()
 nr.name = "windows admin"
 nr.description = "project 2"
-nr.accounts = [session.query(Account_g)[0]]
+nr.accounts = [session.query(Account)[0]]
 session.add(nr)
 
 nr = Role()
 nr.name = "windows net admin"
 nr.description = "project 3"
-nr.accounts = [session.query(Account_g)[0]]
+nr.accounts = [session.query(Account)[0]]
 session.add(nr)
 
 nr = Role()
 nr.name = "genisis user"
 nr.description = "project 4"
-nr.accounts = [session.query(Account_g)[2], session.query(Account_g)[3]]
+nr.accounts = [session.query(Account)[2], session.query(Account)[3]]
 session.add(nr)
 
 nr = Role()
 nr.name = "NetApp admin"
 nr.description = "project 5"
-nr.accounts = [session.query(Account_g)[6]]
+nr.accounts = [session.query(Account)[6]]
 session.add(nr)
 
 nr = Role()
 nr.name = "HPC admin"
 nr.description = "project 6"
-nr.accounts = [session.query(Account_g)[7], session.query(Account_g)[8], session.query(Account_g)[9]]
+nr.accounts = [session.query(Account)[7], session.query(Account)[8], session.query(Account)[9]]
 session.add(nr)
 
 session.commit()
@@ -379,11 +379,11 @@ session.commit()
 
 
 print ("USERS:")
-for u in session.query(User_g).all():
+for u in session.query(User).all():
     print (u)
 
 print("ACCOUNTS:")
-for a in session.query(Account_g).all():
+for a in session.query(Account).all():
     print (a)
 
 print("ROLES:")

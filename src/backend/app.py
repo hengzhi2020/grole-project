@@ -11,7 +11,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import exc
 from database_setup import Base, engine
 
-from models import User_g, Account_g, Role, Access_List, Privilege, Resource
+from models import User, Account, Role, Access_List, Privilege, Resource
 
 
 
@@ -35,18 +35,18 @@ def landing():
 ##  USERS
 @app.route('/grole/api/v0.1/users', methods=['GET'])
 def get_users():
-    all_users = session.query(User_g).all()
+    all_users = session.query(User).all()
     return(jsonify({"all_users": [{"id": u.id,"username": u.username, "email":u.email, "href": url_for('get_user_by_id', user_id = u.id)} for u in all_users ]}))
 
 # HATEOAS version
 @app.route('/grole/api/v0.1/hateoas/users', methods=['GET'])
 def get_users_h():
-    all_users = session.query(User_g).all()
+    all_users = session.query(User).all()
     return(jsonify({"all_users_URL": [url_for('get_user_by_id', user_id = u.id) for u in all_users]}))
 
 @app.route('/grole/api/v0.1/users/<int:user_id>', methods=['GET'])
 def get_user_by_id(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404) #https://stackoverflow.com/questions/11746894/what-is-the-proper-rest-response-code-for-a-valid-request-but-an-empty-data
     return(jsonify({"user":{"id": user.id, "username": user.username, "email": user.email }}))
@@ -54,7 +54,7 @@ def get_user_by_id(user_id):
 
 #@app.route('/grole/api/v0.1/users/<string:nt_acct>', methods=['GET'])
 #def get_user_by_nt_accountname(nt_acct):
-    #user = session.query(User_g).filter(User_g.va_nt_account == nt_acct).first()
+    #user = session.query(User).filter(User.va_nt_account == nt_acct).first()
     #if user is None:
         #abort(404)
     #return(jsonify({"user":{"id": user.id, "username": user.username,"nt_account": user.va_nt_account, "email": user.email }}))
@@ -69,7 +69,7 @@ def create_user():
        #or not 'creation_date' in request.json:
         abort(400)
     
-    new_u = User_g()
+    new_u = User()
     # all create should have default values for missing params
     new_u.username = request.json['username']
     new_u.email = request.json['email']
@@ -87,7 +87,7 @@ def create_user():
 
 @app.route('/grole/api/v0.1/users/<int:user_id>', methods=['PUT'])
 def update_user(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
     if not request.json:
@@ -109,7 +109,7 @@ def update_user(user_id):
 
 @app.route('/grole/api/v0.1/users/<int:user_id>', methods=['DELETE'])
 def delete_user_by_id(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
     session.delete(user)
@@ -120,10 +120,10 @@ def delete_user_by_id(user_id):
 # add an account to a user (use general update? or JSON data?)
 @app.route('/grole/api/v0.1/users/<int:user_id>/<int:account_id>', methods=['PUT'])
 def add_account_to_user(user_id, account_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
-    account = session.query(Account_g).filter(Account_g.id == account_id).one()
+    account = session.query(Account).filter(Account.id == account_id).one()
     if account is None:
         abort(404)
     # if account associated with another user already
@@ -137,7 +137,7 @@ def add_account_to_user(user_id, account_id):
 #get all accounts for a user:
 @app.route('/grole/api/v0.1/users/accounts/<int:user_id>', methods=['GET'])
 def get_accounts_for_user(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
     accounts = []
@@ -151,11 +151,11 @@ def get_accounts_for_user(user_id):
 #get all roles for a user:
 @app.route('/grole/api/v0.1/users/roles/<int:user_id>',methods=['GET'])
 def get_roles_for_user(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
     roles = []
-    #for a in session.query(Account_g).all():
+    #for a in session.query(Account).all():
         #if a.user_id == user_id:
     for a in user.accounts:
         for r in a.roles:
@@ -171,7 +171,7 @@ def get_roles_for_user(user_id):
 #get all roles for a user, organized by account
 @app.route('/grole/api/v0.1/users/roles/by_account/<int:user_id>',methods=['GET'])
 def get_roles_for_user_by_account(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
     roles = defaultdict()
@@ -186,7 +186,7 @@ def get_roles_for_user_by_account(user_id):
 #get all privs for a user
 @app.route('/grole/api/v0.1/users/privileges/<int:user_id>', methods=['GET'])
 def get_privs_for_user(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
     privs = []
@@ -204,7 +204,7 @@ def get_privs_for_user(user_id):
 #get all privs for a user, organized by account and role
 @app.route('/grole/api/v0.1/users/privileges/by_account_and_role/<int:user_id>', methods=['GET'])
 def get_privs_for_user_by_account_and_role(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
     priv_count = 0
@@ -225,7 +225,7 @@ def get_privs_for_user_by_account_and_role(user_id):
 #get all resources associated with a user
 @app.route('/grole/api/v0.1/users/resources/<int:user_id>', methods=['GET'])
 def get_all_resources_for_user(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
     resources = []
@@ -252,7 +252,7 @@ def get_all_resources_for_user(user_id):
 #get all resources associated with a user, organized by account, role, & privilege
 @app.route('/grole/api/v0.1/users/resources/by_account_role_privilege/<int:user_id>', methods=['GET'])
 def get_all_resources_for_user_by_account_role_privilege(user_id):
-    user = session.query(User_g).filter(User_g.id == user_id).first()
+    user = session.query(User).filter(User.id == user_id).first()
     if user is None:
         abort(404)
     #resource_count = 0
@@ -279,25 +279,25 @@ def get_all_resources_for_user_by_account_role_privilege(user_id):
 
 @app.route('/grole/api/v0.1/accounts', methods=['GET'])
 def get_accounts():
-    all_accounts = session.query(Account_g).all()
+    all_accounts = session.query(Account).all()
     #return(jsonify({"all accounts": [{"id": a.id, "uid": a.uid, "linked user": a.user_id} for a in all_accounts]}))
     aclist = []
     for a in all_accounts:
         linked_user = "None"
-        if session.query(User_g).filter(User_g.id == a.user_id).first() is not None:
-            linked_user = session.query(User_g).filter(User_g.id == a.user_id).first().username
+        if session.query(User).filter(User.id == a.user_id).first() is not None:
+            linked_user = session.query(User).filter(User.id == a.user_id).first().username
         aclist.append({"id": a.id, "va_nt_account": a.va_nt_account, "uid" : a.uid,"account_type": a.type, "linked_user": linked_user, "updated" : a.updated_date})
     return(jsonify({"all_accounts": aclist}))
 
 
 @app.route('/grole/api/v0.1/accounts/<int:account_id>', methods=['GET'])
 def get_account_by_id(account_id):
-    account = session.query(Account_g).filter(Account_g.id == account_id).first()
+    account = session.query(Account).filter(Account.id == account_id).first()
     if account is None:
         abort(404)
     linked_user = "None"
-    if session.query(User_g).filter(User_g.id == account.user_id).first() is not None:
-        linked_user = session.query(User_g).filter(User_g.id == account.user_id).first().username
+    if session.query(User).filter(User.id == account.user_id).first() is not None:
+        linked_user = session.query(User).filter(User.id == account.user_id).first().username
 
     return(jsonify({"account": {"id": account.id, "va_nt_account": account.va_nt_account, "uid": account.uid,  "account_type": account.type, "linked_user": linked_user, "updated": account.updated_date}}))
 
@@ -311,7 +311,7 @@ def create_account():
        or not 'type' in request.json:
         abort(400)
 
-    new_a = Account_g()
+    new_a = Account()
     new_a.type = request.json['type']
     new_a.uid = request.json['uid']
     new_a.va_nt_account = request.json['nt_account']
@@ -333,7 +333,7 @@ def create_account():
 
 @app.route('/grole/api/v0.1/accounts/<int:account_id>', methods=['PUT'])
 def update_account(account_id):
-    account = session.query(Account_g).filter(Account_g.id == account_id).first()
+    account = session.query(Account).filter(Account.id == account_id).first()
     if account is None:
         abort(404)
     if not request.json:
@@ -357,7 +357,7 @@ def update_account(account_id):
 
 @app.route('/grole/api/v0.1/accounts/<int:account_id>', methods=['DELETE'])
 def delete_account_by_id(account_id):
-    account = session.query(Account_g).filter(Account_g.id == account_id).first()
+    account = session.query(Account).filter(Account.id == account_id).first()
     if account is None:
         abort(404)
     session.delete(account)

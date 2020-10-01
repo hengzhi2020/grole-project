@@ -11,7 +11,7 @@ from database_setup import Base, engine
 
 
 
-class User_g(Base):
+class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True, index=True) #autoincrement by default
     username = Column(String(40), unique=True, nullable=False)
@@ -20,7 +20,7 @@ class User_g(Base):
     #creation_date = Column(DateTime, unique=False, nullable=False)
     creation_date = Column(DateTime, unique=False, nullable=False, default=datetime.utcnow)
     type = Column(String(45), nullable=True)
-    accounts = relationship("Account_g", back_populates='users')
+    accounts = relationship("Account", back_populates='users')
 
     def __str__(self):
         return str(self.id) +": " + self.username 
@@ -28,7 +28,7 @@ class User_g(Base):
     def __repr__(self):
         return str(self.id) + ": " + self.username + "/" + self.type
 
-class Account_g(Base):
+class Account(Base):
     __tablename__ = 'accounts'
     id = Column(Integer, primary_key=True) #autoincrement by default
     va_nt_account = Column(String(12), unique=True, nullable=False) #possibly primarykey
@@ -38,7 +38,7 @@ class Account_g(Base):
     creation_date = Column(DateTime, unique=False, nullable=False, default=datetime.utcnow)
     updated_date = Column(DateTime, unique=False, nullable=True)
     user_id = Column(Integer, ForeignKey('users.id'))
-    users = relationship("User_g", back_populates='accounts')
+    users = relationship("User", back_populates='accounts')
     roles = relationship("Role", secondary='account_role_association', back_populates="accounts")
     
     def __str__(self):
@@ -52,7 +52,7 @@ class Role(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(50), unique=True, nullable=False)
     description = Column(String(400), unique=False, nullable=True)
-    accounts = relationship("Account_g", secondary='account_role_association', back_populates="roles")
+    accounts = relationship("Account", secondary='account_role_association', back_populates="roles")
     # move to AccessList?
     access_list_id = Column(Integer, ForeignKey('access_list.id'))
     access_list = relationship("Access_List", back_populates='role', uselist = False) #one-to-one
