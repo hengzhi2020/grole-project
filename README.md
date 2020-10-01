@@ -4,13 +4,18 @@ Webapp created to manage access control of genisis resources.
 
 # Dependencies
 
-- sqlite 3
+- mysql
 - python 3.7
   - flask
   - sqlalchemy
 - nodejs 14.8.0
 
-Example install:
+## Additional Development Dependencies
+
+- sqlite 3
+- python library Flask-Testing
+
+Example dev install:
 ```
 # Import our GPG public key
 rpm --import https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
@@ -29,9 +34,7 @@ yum install conda
 
 yum install sqlite
 
-conda create -n grole python=3.7
-conda activate grole
-conda install --file requirements.txt
+conda create -f environment.yml
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 nvm install 14.8.0
