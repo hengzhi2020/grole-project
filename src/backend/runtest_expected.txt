@@ -1,0 +1,655 @@
+TEST 1:
+curl -i http://localhost:4996/grole/api/v0.1/users
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 954
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:07 GMT
+
+{
+  "all_users": [
+    {
+      "email": "d1@somewhere.com", 
+      "href": "/grole/api/v0.1/users/1", 
+      "id": 1, 
+      "username": "DJL1"
+    }, 
+    {
+      "email": "d2@somewhere.com", 
+      "href": "/grole/api/v0.1/users/2", 
+      "id": 2, 
+      "username": "DJL2"
+    }, 
+    {
+      "email": "d3@somewhere.com", 
+      "href": "/grole/api/v0.1/users/3", 
+      "id": 3, 
+      "username": "DJL3"
+    }, 
+    {
+      "email": "d4@somewhere.com", 
+      "href": "/grole/api/v0.1/users/4", 
+      "id": 4, 
+      "username": "DJL4"
+    }, 
+    {
+      "email": "d5@somewhere.com", 
+      "href": "/grole/api/v0.1/users/5", 
+      "id": 5, 
+      "username": "DJL5"
+    }, 
+    {
+      "email": "d6@somewhere.com", 
+      "href": "/grole/api/v0.1/users/6", 
+      "id": 6, 
+      "username": "DJL6"
+    }, 
+    {
+      "email": "d7@somewhere.com", 
+      "href": "/grole/api/v0.1/users/7", 
+      "id": 7, 
+      "username": "DJL7"
+    }
+  ]
+}
+TEST 2:
+curl -i http://localhost:4996/grole/api/v0.1/hateoas/users
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 251
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:08 GMT
+
+{
+  "all_users_URL": [
+    "/grole/api/v0.1/users/1", 
+    "/grole/api/v0.1/users/2", 
+    "/grole/api/v0.1/users/3", 
+    "/grole/api/v0.1/users/4", 
+    "/grole/api/v0.1/users/5", 
+    "/grole/api/v0.1/users/6", 
+    "/grole/api/v0.1/users/7"
+  ]
+}
+TEST 3:
+curl -i http://localhost:4996/grole/api/v0.1/users/1
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 91
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:09 GMT
+
+{
+  "user": {
+    "email": "d1@somewhere.com", 
+    "id": 1, 
+    "username": "DJL1"
+  }
+}
+TEST 4:
+#curl -i http://localhost:4996/grole/api/v0.1/users/vhabhsdjl4
+TEST 5:
+curl -i http://localhost:4996/grole/api/v0.1/users/accounts/3
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 148
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:11 GMT
+
+{
+  "accounts": [
+    {
+      "id": 5, 
+      "type": "linux", 
+      "uid": "00000-000-00000005", 
+      "va_nt_account": "vhabhsdjl5"
+    }
+  ]
+}
+TEST 6:
+curl -i http://localhost:4996/grole/api/v0.1/users/roles/3
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 112
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:12 GMT
+
+{
+  "roles": [
+    {
+      "description": "project 1", 
+      "id": 1, 
+      "name": "linux admin"
+    }
+  ]
+}
+TEST 7:
+curl -i http://localhost:4996/grole/api/v0.1/users/roles/by_account/3
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 150
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:13 GMT
+
+{
+  "roles_by_account": {
+    "5": [
+      {
+        "description": "project 1", 
+        "id": 1, 
+        "name": "linux admin"
+      }
+    ]
+  }
+}
+TEST 8:
+curl -i http://localhost:4996/grole/api/v0.1/users/privileges/3
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 225
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:14 GMT
+
+{
+  "privs": [
+    {
+      "description": "server 010 file read", 
+      "id": 2, 
+      "name": "d010-read"
+    }, 
+    {
+      "description": "server 001 file write", 
+      "id": 1, 
+      "name": "d001-write"
+    }
+  ]
+}
+TEST 9:
+curl -i http://localhost:4996/grole/api/v0.1/users/privileges/by_account_and_role/3
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 374
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:15 GMT
+
+{
+  "privileges_by_account_role": {
+    "5": [
+      {
+        "linux admin": [
+          {
+            "description": "server 001 file write", 
+            "id": 1, 
+            "name": "d001-write"
+          }, 
+          {
+            "description": "server 010 file read", 
+            "id": 2, 
+            "name": "d010-read"
+          }
+        ]
+      }
+    ]
+  }
+}
+TEST 10:
+curl -i http://localhost:4996/grole/api/v0.1/users/resources/3
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 118
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:16 GMT
+
+{
+  "resources": [
+    {
+      "id": 1, 
+      "kind": 2, 
+      "name": "Node_001", 
+      "site": "BOS"
+    }
+  ]
+}
+TEST 11:
+curl -i http://localhost:4996/grole/api/v0.1/users/resources/by_account_role_privilege/6
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 980
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:17 GMT
+
+{
+  "resources_by_account_role_priv": {
+    "6": [
+      {
+        "linux admin": [
+          {
+            "d001-write": {
+              "id": 1, 
+              "kind": 2, 
+              "site": "BOS"
+            }
+          }, 
+          {
+            "d010-read": {
+              "id": 1, 
+              "kind": 2, 
+              "site": "BOS"
+            }
+          }
+        ]
+      }
+    ], 
+    "7": [
+      {
+        "NetApp admin": [
+          {
+            "NetApp-admin": {
+              "id": 3, 
+              "kind": 1, 
+              "site": "PTH"
+            }
+          }, 
+          {
+            "NetApp2-admin": {
+              "id": 4, 
+              "kind": 1, 
+              "site": "PTH"
+            }
+          }
+        ]
+      }
+    ], 
+    "8": [
+      {
+        "HPC admin": [
+          {
+            "HPC-admin": {
+              "id": 4, 
+              "kind": 1, 
+              "site": "PTH"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+TEST 12:
+curl -i http://localhost:4996/grole/api/v0.1/accounts
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 2197
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:18 GMT
+
+{
+  "all_accounts": [
+    {
+      "account_type": "windows", 
+      "id": 1, 
+      "linked_user": "DJL1", 
+      "uid": "00000-000-00000001", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl1"
+    }, 
+    {
+      "account_type": "linux", 
+      "id": 2, 
+      "linked_user": "DJL2", 
+      "uid": "00000-000-00000002", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl2"
+    }, 
+    {
+      "account_type": "genisis", 
+      "id": 3, 
+      "linked_user": "DJL2", 
+      "uid": "00000-000-00000003", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl3"
+    }, 
+    {
+      "account_type": "genisis", 
+      "id": 4, 
+      "linked_user": "DJL4", 
+      "uid": "00000-000-00000004", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl4"
+    }, 
+    {
+      "account_type": "linux", 
+      "id": 5, 
+      "linked_user": "DJL3", 
+      "uid": "00000-000-00000005", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl5"
+    }, 
+    {
+      "account_type": "linux", 
+      "id": 6, 
+      "linked_user": "DJL6", 
+      "uid": "00000-000-00000006", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl6"
+    }, 
+    {
+      "account_type": "netapp", 
+      "id": 7, 
+      "linked_user": "DJL6", 
+      "uid": "00000-000-00000007", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl7"
+    }, 
+    {
+      "account_type": "HPC", 
+      "id": 8, 
+      "linked_user": "DJL6", 
+      "uid": "00000-000-00000008", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl8"
+    }, 
+    {
+      "account_type": "HPC-limited", 
+      "id": 9, 
+      "linked_user": "DJL7", 
+      "uid": "00000-000-00000009", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl9"
+    }, 
+    {
+      "account_type": "HPC-unlimited", 
+      "id": 10, 
+      "linked_user": "DJL7", 
+      "uid": "00000-000-00000010", 
+      "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+      "va_nt_account": "vhabhsdjl10"
+    }
+  ]
+}
+TEST 13:
+curl -i http://localhost:4996/grole/api/v0.1/accounts/2
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 212
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:19 GMT
+
+{
+  "account": {
+    "account_type": "linux", 
+    "id": 2, 
+    "linked_user": "DJL2", 
+    "uid": "00000-000-00000002", 
+    "updated": "Wed, 09 Sep 2020 01:00:00 GMT", 
+    "va_nt_account": "vhabhsdjl2"
+  }
+}
+TEST 14:
+curl -i http://localhost:4996/grole/api/v0.1/roles
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 739
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:20 GMT
+
+{
+  "all_roles": [
+    {
+      "access_list": 1, 
+      "description": "project 1", 
+      "id": 1, 
+      "name": "linux admin"
+    }, 
+    {
+      "access_list": 2, 
+      "description": "project 2", 
+      "id": 2, 
+      "name": "windows admin"
+    }, 
+    {
+      "access_list": 3, 
+      "description": "project 3", 
+      "id": 3, 
+      "name": "windows net admin"
+    }, 
+    {
+      "access_list": 4, 
+      "description": "project 4", 
+      "id": 4, 
+      "name": "genisis user"
+    }, 
+    {
+      "access_list": 5, 
+      "description": "project 5", 
+      "id": 5, 
+      "name": "NetApp admin"
+    }, 
+    {
+      "access_list": 6, 
+      "description": "project 6", 
+      "id": 6, 
+      "name": "HPC admin"
+    }
+  ]
+}
+TEST 15:
+curl -i http://localhost:4996/grole/api/v0.1/roles/2
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 95
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:21 GMT
+
+{
+  "Role": {
+    "description": "project 2", 
+    "id": 2, 
+    "name": "windows admin"
+  }
+}
+TEST 16:
+curl -i http://localhost:4996/grole/api/v0.1/roles/accounts/3
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 175
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:23 GMT
+
+{
+  "accounts_for_role": [
+    {
+      "href": "/grole/api/v0.1/accounts/1", 
+      "id": 1, 
+      "nt_account": "vhabhsdjl1", 
+      "uid": "00000-000-00000001"
+    }
+  ]
+}
+TEST 17:
+curl -i http://localhost:4996/grole/api/v0.1/roles/users/3
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 125
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:24 GMT
+
+{
+  "users_for_role": [
+    {
+      "href": "/grole/api/v0.1/users/1", 
+      "id": 1, 
+      "username": "DJL1"
+    }
+  ]
+}
+TEST 18:
+curl -i http://localhost:4996/grole/api/v0.1/privileges
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 1225
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:25 GMT
+
+{
+  "all_privileges": [
+    {
+      "description": "server 001 file write", 
+      "href": "/grole/api/v0.1/privileges/1", 
+      "id": 1, 
+      "name": "d001-write"
+    }, 
+    {
+      "description": "server 010 file read", 
+      "href": "/grole/api/v0.1/privileges/2", 
+      "id": 2, 
+      "name": "d010-read"
+    }, 
+    {
+      "description": "VM 001 administration", 
+      "href": "/grole/api/v0.1/privileges/3", 
+      "id": 3, 
+      "name": "VM001-admin"
+    }, 
+    {
+      "description": "gitlab instance 1 admin", 
+      "href": "/grole/api/v0.1/privileges/4", 
+      "id": 4, 
+      "name": "GL001-admin"
+    }, 
+    {
+      "description": "gitlab instance 2 admin", 
+      "href": "/grole/api/v0.1/privileges/5", 
+      "id": 5, 
+      "name": "GL002-write"
+    }, 
+    {
+      "description": "NetApp 1 admin", 
+      "href": "/grole/api/v0.1/privileges/6", 
+      "id": 6, 
+      "name": "NetApp-admin"
+    }, 
+    {
+      "description": "NetApp 2 admin", 
+      "href": "/grole/api/v0.1/privileges/7", 
+      "id": 7, 
+      "name": "NetApp2-admin"
+    }, 
+    {
+      "description": "cluster 2 admin", 
+      "href": "/grole/api/v0.1/privileges/8", 
+      "id": 8, 
+      "name": "HPC-admin"
+    }
+  ]
+}
+TEST 19:
+curl -i http://localhost:4996/grole/api/v0.1/privileges/2
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 107
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:26 GMT
+
+{
+  "privilege": {
+    "description": "server 010 file read", 
+    "id": 2, 
+    "name": "d010-read"
+  }
+}
+TEST 20:
+curl -i http://localhost:4996/grole/api/v0.1/privileges/roles/3
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 74
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:27 GMT
+
+{
+  "role_having_priv": {
+    "id": 2, 
+    "name": "windows admin"
+  }
+}
+TEST 21:
+curl -i http://localhost:4996/grole/api/v0.1/resources
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 588
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:28 GMT
+
+{
+  "all_resources": [
+    {
+      "href": "/grole/api/v0.1/resources/1", 
+      "id": 1, 
+      "kind": 2, 
+      "name": "Node_001", 
+      "site": "BOS"
+    }, 
+    {
+      "href": "/grole/api/v0.1/resources/2", 
+      "id": 2, 
+      "kind": 1, 
+      "name": "Sto_001", 
+      "site": "PTH"
+    }, 
+    {
+      "href": "/grole/api/v0.1/resources/3", 
+      "id": 3, 
+      "kind": 1, 
+      "name": "Sto_002", 
+      "site": "PTH"
+    }, 
+    {
+      "href": "/grole/api/v0.1/resources/4", 
+      "id": 4, 
+      "kind": 1, 
+      "name": "Sto_003", 
+      "site": "PTH"
+    }
+  ]
+}
+TEST 22:
+curl -i http://localhost:4996/grole/api/v0.1/resources/2
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 96
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:29 GMT
+
+{
+  "resource": {
+    "id": 2, 
+    "kind": 1, 
+    "name": "Sto_001", 
+    "site": "PTH"
+  }
+}
+TEST 23:
+curl -i http://localhost:4996/grole/api/v0.1/resources/users/2
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 129
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Fri, 02 Oct 2020 01:19:30 GMT
+
+{
+  "users_for_resource": [
+    {
+      "href": "/grole/api/v0.1/users/1", 
+      "id": 1, 
+      "username": "DJL1"
+    }
+  ]
+}
+TEST 24:
+curl -X PUT http://localhost:4996/grole/api/v0.1/roles/privileges/4/5
+{
+  "priv_added_to_role": {
+    "priv_added": 5, 
+    "role_updated": 4
+  }
+}

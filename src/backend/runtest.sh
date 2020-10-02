@@ -1,7 +1,9 @@
+ii=1
 while read -r line; 
 do 
-    echo "NEXT TEST:";
+    echo "TEST $ii:";
     echo $line; 
-    sleep 5; 
+    sleep 1; 
     eval $line;  
+    ((ii=ii+1))
 done < curl_test.sh
