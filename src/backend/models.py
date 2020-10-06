@@ -12,7 +12,7 @@ from database_setup import Base, engine
 
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
     id = Column(Integer, primary_key=True, index=True) #autoincrement by default
     username = Column(String(40), unique=True, nullable=False)
     email = Column(String(120), unique=True, nullable=True)
@@ -29,7 +29,7 @@ class User(Base):
         return str(self.id) + ": " + self.username + "/" + self.type
 
 class Account(Base):
-    __tablename__ = 'accounts'
+    __tablename__ = 'account'
     id = Column(Integer, primary_key=True) #autoincrement by default
     va_nt_account = Column(String(12), unique=True, nullable=False) #possibly primarykey
     type = Column(String(45), nullable=True)
@@ -37,7 +37,7 @@ class Account(Base):
     #creation_date = Column(DateTime, unique=False, nullable=False)
     creation_date = Column(DateTime, unique=False, nullable=False, default=datetime.utcnow)
     updated_date = Column(DateTime, unique=False, nullable=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
+    user_id = Column(Integer, ForeignKey('user.id'))
     users = relationship("User", back_populates='accounts')
     roles = relationship("Role", secondary='account_role_association', back_populates="accounts")
     
@@ -48,7 +48,7 @@ class Account(Base):
         return "(" + str(self.id) + ": " + self.va_nt_account + "/" + self.type + "/" + self.uid + ")"
 
 class Role(Base):
-    __tablename__ = 'roles'
+    __tablename__ = 'role'
     id = Column(Integer, primary_key=True)
     name = Column(String(50), unique=True, nullable=False)
     description = Column(String(400), unique=False, nullable=True)
@@ -65,8 +65,8 @@ class Role(Base):
 
 # Association table for many-to-many accounts/roles:
 account_role_association = Table('account_role_association', Base.metadata,
-                         Column('account_id', Integer, ForeignKey('accounts.id')),
-                         Column('role_id', Integer, ForeignKey('roles.id'))
+                         Column('account_id', Integer, ForeignKey('account.id')),
+                         Column('role_id', Integer, ForeignKey('role.id'))
 )
 
 
