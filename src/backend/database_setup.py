@@ -1,4 +1,4 @@
-import sys
+from os import getenv
 
 # for creating the mapper code
 from sqlalchemy import Column, ForeignKey, Integer, String
@@ -17,6 +17,7 @@ Base = declarative_base()
 
 
 # creates a create_engine instance at the bottom of the file
-engine = create_engine('sqlite:///GROLE_data.db')
+db_url = getenv('DB_URL', 'sqlite:///GROLE_data.db')
+engine = create_engine(db_url)
 Base.metadata.bind = engine 
 #Base.metadata.create_all(engine)
