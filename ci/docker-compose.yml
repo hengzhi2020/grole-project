@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  mysql-db:
+    image: mysql:5.7
+    command: --init-file /data/app/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: VejdKfq4FRvKEGuseHx1VQ==
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbuser#1812
+      MYSQL_DATABASE: grole
+    configs:
+      - source: db-conf
+        target: /data/app/init.sql
+    volumes:
+      - grole-db:/var/lib/mysql
+
+  server:
+    image: grole
+    depends_on:
+      - grole-db
+    env_file: ../.env.production
+    ports:
+      - "4996:4996"
+
+volumes:
+  grole-db:
+    external: true
+ 
+configs:
+  db-conf:
+    file: ./init.sql
+

@@ -154,7 +154,7 @@ class App extends Component {
   }
 
   getUsers() {
-    fetch(`${process.env.REACT_APP_USERS_URL}`)
+    fetch(`${process.env.REACT_APP_API_URL}/users`)
       .then((response) => response.json())
       .then((allusers) => {
         this.setState({
@@ -165,7 +165,7 @@ class App extends Component {
   }
 
   getRoles() {
-    fetch(`${process.env.REACT_APP_ROLES_URL}`)
+    fetch(`${process.env.REACT_APP_API_URL}/roles`)
       .then((response) => response.json())
       .then((allroles) => {
         this.setState({
@@ -175,7 +175,7 @@ class App extends Component {
       });
   }
   getPermissions() {
-    fetch(`${process.env.REACT_APP_PERMISSIONS_URL}`)
+    fetch(`${process.env.REACT_APP_API_URL}/permissions`)
       .then((response) => response.json())
       .then((allpermissions) => {
         this.setState({

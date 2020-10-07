@@ -1,0 +1,9 @@
+CREATE DATABASE
+IF NOT EXISTS grole;
+USE grole;
+
+# create the users
+CREATE USER
+IF NOT EXISTS 'grole_user'@'%' IDENTIFIED BY 'password';
+GRANT CREATE, ALTER, INDEX, LOCK TABLES, REFERENCES, UPDATE, DELETE, DROP, SELECT, INSERT ON grole.* TO 'grole_user'@'%';
+

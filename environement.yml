@@ -1,9 +1,0 @@
-name: grole
-channels:
-  - conda-forge
-dependencies:
-  - python=3.7
-  - Flask
-  - SQLAlchemy
-  - Flask-Testing
-
