@@ -44,3 +44,5 @@ restore: stop
 	sudo rm -rf backups/tmp/
 	docker stack deploy --prune -c ci/docker-compose.yml grole
 
+.PHONY: build
+

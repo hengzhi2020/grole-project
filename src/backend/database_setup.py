@@ -17,7 +17,7 @@ Base = declarative_base()
 
 
 # creates a create_engine instance at the bottom of the file
-db_url = getenv('DB_URL', 'sqlite:///GROLE_data.db')
-engine = create_engine(db_url)
+db_uri = getenv('DB_URI', 'sqlite:///GROLE_data.db')
+engine = create_engine(db_uri)
 Base.metadata.bind = engine 
 #Base.metadata.create_all(engine)
