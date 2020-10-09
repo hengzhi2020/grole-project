@@ -8,7 +8,7 @@ from os import getenv
 
 app = Flask(__name__, static_folder="../../build/static", template_folder="../../build")
 if getenv('FLASK_ENV', 'development') == 'development':
-    cors = CORS(app)
+    CORS(app)
 
 
 from sqlalchemy import create_engine

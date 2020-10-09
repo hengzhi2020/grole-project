@@ -2,6 +2,7 @@
   "name": "grole-ui",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/grole",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -18,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "backend": "conda run -n grole python src/backend/app.py",
+    "backend": "conda run -n grole bash -c 'python src/backend/app.py > /dev/tty 2>&1'",
     "dev": "concurrently --kill-others \"npm run start\" \"npm run backend\""
   },
   "eslintConfig": {
@@ -40,3 +41,4 @@
     "concurrently": "^5.3.0"
   }
 }
+
