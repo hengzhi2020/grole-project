@@ -9,7 +9,7 @@ RUN wget http://aia.pki.va.gov/PKI/AIA/VA/VA-Internal-S2-RCA1-v1.cer && \
     update-ca-certificates
 ENV NODE_EXTRA_CA_CERTS /usr/local/share/ca-certificates/va.crt
 
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json .env.production ./
 RUN npm install
 
 COPY requirements.txt .

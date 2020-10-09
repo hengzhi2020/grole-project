@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, abort, make_response, request, url_for, render_template
+from flask_cors import CORS
 from sqlalchemy.ext.declarative import declarative_base ##
 from datetime import datetime
 from collections import defaultdict
@@ -6,6 +7,9 @@ from os import getenv
 
 
 app = Flask(__name__, static_folder="../../build/static", template_folder="../../build")
+if getenv('FLASK_ENV', 'development') == 'development':
+    cors = CORS(app)
+
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -651,3 +655,4 @@ def dummy_return(fname):
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=4996)
+

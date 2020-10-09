@@ -19,7 +19,10 @@ services:
     image: grole
     depends_on:
       - grole-db
-    env_file: ../.env.production
+    environment:
+      BASE_PATH: /grole
+      DB_URI: mysql+mysqldb://grole_user:password@mysql-db/grole
+      FLASK_ENV: production
     ports:
       - "4996:4996"
 

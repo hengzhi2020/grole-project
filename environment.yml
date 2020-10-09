@@ -22,4 +22,5 @@ dependencies:
   - virtualenv-clone=0.5.4
   - Werkzeug=1.0.1
   - zipp=3.2.0
+  - Flask-Cors=3.0.8
 
