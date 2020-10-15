@@ -1,234 +1,68 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Tab, Table, Menu, Pagination } from 'semantic-ui-react';
 import './Permissions.css';
 
 export default function Permissions(props) {
-  console.log(
-    'permissionsObj passing to Permissions-componenent: ',
-    props.permissionsObj
+  // console.log('permissionsObj by props', props.permissionsObj);
+
+  const NumOfItemsShownOnPage = 12;
+  const totalPages = Math.ceil(
+    props.permissionsObj.all_privileges.length / NumOfItemsShownOnPage
   );
 
-  let roleList;
+  let permissionsList;
 
-  roleList = props.permissionsObj.map((item, i) => {
-    return (
-      <Table.Cell key={i}>
-        <ol>
-          <li>{item.name} </li>
-          <li> {item.username}</li>
-          <li>{item.company.catchPhrase}</li>
-          <li> {item.email}</li>
-          <li> {item.phone}</li>
-          <li> {item.website}</li>
-          <li> {item.company.name}</li>
-        </ol>
-      </Table.Cell>
-    );
-  });
+  if (!!props.permissionsObj) {
+    permissionsList = props.permissionsObj.all_privileges.map((item, i) => {
+      if (
+        (props.pageNumber - 1) * NumOfItemsShownOnPage <= i &&
+        i < props.pageNumber * NumOfItemsShownOnPage
+      ) {
+        return (
+          <Table.Row key={i}>
+            <Table.Cell>{item.id}</Table.Cell>
+            <Table.Cell>{item.name}</Table.Cell>
+            <Table.Cell>{item.description}</Table.Cell>
+            <Table.Cell>{item.href}</Table.Cell>
+          </Table.Row>
+        );
+      } else {
+        return '';
+      }
+    });
+  }
 
   return (
     <div className="maintable">
       <Table striped>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Role</Table.HeaderCell>
-            <Table.HeaderCell>Permission</Table.HeaderCell>
+            <Table.HeaderCell>ID</Table.HeaderCell>
+            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell>Description</Table.HeaderCell>
+            <Table.HeaderCell>Ref_Link</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
-        <Table.Body>
+        <Table.Body>{permissionsList} </Table.Body>
+
+        <Table.Footer>
           <Table.Row>
-            <Table.Cell>Systems Architect</Table.Cell>
-            <Table.Cell>
-              <ol>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like; John is an
-                  interesting boy but sometimes
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like; John is an
-                  interesting boy but sometimes you don't
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like; John is an
-                  interesting boy but sometimes like;
-                </li>
-              </ol>
-            </Table.Cell>
+            <Table.HeaderCell colSpan="9">
+              <Menu floated="right">
+                <Pagination
+                  onPageChange={props.pageSelector}
+                  defaultActivePage={0}
+                  totalPages={totalPages}
+                  ellipsisItem={null}
+                  // firstItem={null}
+                  // lastItem={null}
+                  siblingRange={9}
+                />
+              </Menu>
+            </Table.HeaderCell>
           </Table.Row>
-          <Table.Row>
-            <Table.Cell>System Administrator</Table.Cell>
-            <Table.Cell>
-              <ol>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like; John is an
-                  interesting boy but sometimes
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like; John is an
-                  interesting boy but sometimes
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything ye;
-                </li>
-              </ol>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Research Director</Table.Cell>
-            <Table.Cell>
-              <ol>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everon't really have enough room to
-                  describe everything you'd like;
-                </li>
-              </ol>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Project Manager</Table.Cell>
-            <Table.Cell>
-              <ol>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everyou'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like; John is an
-                  interesting boy but sometimes you don't really have enough
-                  room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-              </ol>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Web Developer</Table.Cell>
-            <Table.Cell>
-              <ol>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like; John is an
-                  interesting boy but sometimes you don't really have enough
-                  room to describe everything you'd like;
-                </li>
-              </ol>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>VA MVP User</Table.Cell>
-            <Table.Cell>
-              <ol>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like; John is an
-                  interesting boy but sometimes you don't really have enough
-                  room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like; John is an
-                  interesting boy but sometimes you don't really have enough
-                  room to describe everything you'd like;
-                </li>
-              </ol>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>VA non-MVP User</Table.Cell>
-            <Table.Cell>
-              <ol>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-              </ol>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Regular User</Table.Cell>
-            <Table.Cell>
-              <ol>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;
-                </li>
-                <li>
-                  John is an interesting boy but sometimes you don't really have
-                  enough room to describe everything you'd like;g boy but
-                  sometimes you don't really have enough room to describe everyt
-                </li>
-              </ol>
-            </Table.Cell>
-          </Table.Row>
-        </Table.Body>
+        </Table.Footer>
       </Table>
     </div>
   );

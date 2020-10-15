@@ -5,24 +5,26 @@ import './Roles.css';
 export default function Roles(props) {
   // console.log('rolesObj passing to Roles-componenent: ', props.rolesObj);
 
-  const usersNumOnePage = 12;
-  const totalPages = Math.ceil(props.rolesObj.length / usersNumOnePage);
-  let usersList;
+  const NumOfItemsShownOnPage = 12;
+  const totalPages = Math.ceil(
+    props.rolesObj.all_roles.length / NumOfItemsShownOnPage
+  );
+  let rolesList;
 
   if (!!props.rolesObj) {
-    usersList = props.rolesObj.map((item, i) => {
+    rolesList = props.rolesObj.all_roles.map((item, i) => {
       if (
-        (props.pageNumber - 1) * usersNumOnePage <= i &&
-        i < props.pageNumber * usersNumOnePage
+        (props.pageNumber - 1) * NumOfItemsShownOnPage <= i &&
+        i < props.pageNumber * NumOfItemsShownOnPage
       ) {
         return (
           <Table.Row key={i}>
-            <Table.Cell>{item.username}</Table.Cell>
+            <Table.Cell>{item.id}</Table.Cell>
             <Table.Cell>{item.name}</Table.Cell>
-            <Table.Cell>{item.company.name}</Table.Cell>
-            <Table.Cell>{item.email}</Table.Cell>
-            <Table.Cell>{item.phone}</Table.Cell>
-            <Table.Cell>{item.website}</Table.Cell>
+            <Table.Cell>{item.description}</Table.Cell>
+            <Table.Cell>{item.access_list}</Table.Cell>
+            <Table.Cell>{item.id}</Table.Cell>
+            <Table.Cell>{item.id}</Table.Cell>
           </Table.Row>
         );
       } else {
@@ -44,7 +46,7 @@ export default function Roles(props) {
         </Table.Row>
       </Table.Header>
 
-      <Table.Body>{usersList}</Table.Body>
+      <Table.Body>{rolesList}</Table.Body>
 
       <Table.Footer>
         <Table.Row>
