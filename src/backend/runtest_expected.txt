@@ -3,8 +3,9 @@ curl -i http://localhost:4996/grole/api/v0.1/users
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 954
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:07 GMT
+Date: Thu, 15 Oct 2020 15:12:54 GMT
 
 {
   "all_users": [
@@ -57,8 +58,9 @@ curl -i http://localhost:4996/grole/api/v0.1/hateoas/users
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 251
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:08 GMT
+Date: Thu, 15 Oct 2020 15:12:55 GMT
 
 {
   "all_users_URL": [
@@ -76,8 +78,9 @@ curl -i http://localhost:4996/grole/api/v0.1/users/1
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 91
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:09 GMT
+Date: Thu, 15 Oct 2020 15:12:56 GMT
 
 {
   "user": {
@@ -93,8 +96,9 @@ curl -i http://localhost:4996/grole/api/v0.1/users/accounts/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 148
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:11 GMT
+Date: Thu, 15 Oct 2020 15:12:58 GMT
 
 {
   "accounts": [
@@ -111,8 +115,9 @@ curl -i http://localhost:4996/grole/api/v0.1/users/roles/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 112
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:12 GMT
+Date: Thu, 15 Oct 2020 15:12:59 GMT
 
 {
   "roles": [
@@ -128,8 +133,9 @@ curl -i http://localhost:4996/grole/api/v0.1/users/roles/by_account/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 150
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:13 GMT
+Date: Thu, 15 Oct 2020 15:13:00 GMT
 
 {
   "roles_by_account": {
@@ -147,8 +153,9 @@ curl -i http://localhost:4996/grole/api/v0.1/users/privileges/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 225
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:14 GMT
+Date: Thu, 15 Oct 2020 15:13:01 GMT
 
 {
   "privs": [
@@ -169,8 +176,9 @@ curl -i http://localhost:4996/grole/api/v0.1/users/privileges/by_account_and_rol
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 374
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:15 GMT
+Date: Thu, 15 Oct 2020 15:13:02 GMT
 
 {
   "privileges_by_account_role": {
@@ -197,8 +205,9 @@ curl -i http://localhost:4996/grole/api/v0.1/users/resources/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 118
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:16 GMT
+Date: Thu, 15 Oct 2020 15:13:03 GMT
 
 {
   "resources": [
@@ -215,8 +224,9 @@ curl -i http://localhost:4996/grole/api/v0.1/users/resources/by_account_role_pri
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 980
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:17 GMT
+Date: Thu, 15 Oct 2020 15:13:05 GMT
 
 {
   "resources_by_account_role_priv": {
@@ -280,8 +290,9 @@ curl -i http://localhost:4996/grole/api/v0.1/accounts
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 2197
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:18 GMT
+Date: Thu, 15 Oct 2020 15:13:06 GMT
 
 {
   "all_accounts": [
@@ -372,8 +383,9 @@ curl -i http://localhost:4996/grole/api/v0.1/accounts/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 212
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:19 GMT
+Date: Thu, 15 Oct 2020 15:13:07 GMT
 
 {
   "account": {
@@ -390,8 +402,9 @@ curl -i http://localhost:4996/grole/api/v0.1/roles
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 739
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:20 GMT
+Date: Thu, 15 Oct 2020 15:13:08 GMT
 
 {
   "all_roles": [
@@ -438,8 +451,9 @@ curl -i http://localhost:4996/grole/api/v0.1/roles/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 95
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:21 GMT
+Date: Thu, 15 Oct 2020 15:13:09 GMT
 
 {
   "Role": {
@@ -453,8 +467,9 @@ curl -i http://localhost:4996/grole/api/v0.1/roles/accounts/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 175
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:23 GMT
+Date: Thu, 15 Oct 2020 15:13:10 GMT
 
 {
   "accounts_for_role": [
@@ -471,8 +486,9 @@ curl -i http://localhost:4996/grole/api/v0.1/roles/users/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 125
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:24 GMT
+Date: Thu, 15 Oct 2020 15:13:11 GMT
 
 {
   "users_for_role": [
@@ -488,8 +504,9 @@ curl -i http://localhost:4996/grole/api/v0.1/privileges
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 1225
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:25 GMT
+Date: Thu, 15 Oct 2020 15:13:12 GMT
 
 {
   "all_privileges": [
@@ -548,8 +565,9 @@ curl -i http://localhost:4996/grole/api/v0.1/privileges/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 107
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:26 GMT
+Date: Thu, 15 Oct 2020 15:13:13 GMT
 
 {
   "privilege": {
@@ -563,8 +581,9 @@ curl -i http://localhost:4996/grole/api/v0.1/privileges/roles/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 74
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:27 GMT
+Date: Thu, 15 Oct 2020 15:13:14 GMT
 
 {
   "role_having_priv": {
@@ -577,8 +596,9 @@ curl -i http://localhost:4996/grole/api/v0.1/resources
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 588
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:28 GMT
+Date: Thu, 15 Oct 2020 15:13:15 GMT
 
 {
   "all_resources": [
@@ -617,8 +637,9 @@ curl -i http://localhost:4996/grole/api/v0.1/resources/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 96
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:29 GMT
+Date: Thu, 15 Oct 2020 15:13:16 GMT
 
 {
   "resource": {
@@ -633,8 +654,9 @@ curl -i http://localhost:4996/grole/api/v0.1/resources/users/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 129
+Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Fri, 02 Oct 2020 01:19:30 GMT
+Date: Thu, 15 Oct 2020 15:13:17 GMT
 
 {
   "users_for_resource": [
@@ -652,4 +674,9 @@ curl -X PUT http://localhost:4996/grole/api/v0.1/roles/privileges/4/5
     "priv_added": 5, 
     "role_updated": 4
   }
+}
+TEST 25:
+curl -X DELETE http://localhost:4996/grole/api/v0.1/privileges/2
+{
+  "privilege_deleted": 2
 }

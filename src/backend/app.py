@@ -569,7 +569,13 @@ def update_priv(priv_id):
 # delete a priv by ID
 @app.route(api_path + '/privileges/<int:priv_id>', methods=['DELETE'])
 def delete_priv_by_id(priv_id):
-    pass
+    priv = session.query(Privilege).filter(Privilege.id == priv_id).first()
+    if priv is None:
+        abort(404)
+    session.delete(priv)
+    session.commit()
+    return(jsonify({"privilege_deleted": priv_id}))
+
 
 # FIXME: can only one ROLE have a privilege??
 # get role having a privilege by ID

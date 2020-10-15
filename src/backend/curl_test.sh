@@ -22,3 +22,4 @@ curl -i    http://localhost:4996/grole/api/v0.1/resources
 curl -i    http://localhost:4996/grole/api/v0.1/resources/2
 curl -i    http://localhost:4996/grole/api/v0.1/resources/users/2
 curl -X PUT    http://localhost:4996/grole/api/v0.1/roles/privileges/4/5
+curl -X DELETE http://localhost:4996/grole/api/v0.1/privileges/2
