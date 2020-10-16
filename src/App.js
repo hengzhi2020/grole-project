@@ -77,16 +77,16 @@ class App extends Component {
 
               <nav className="Nav-style">
                 <div>
-                  <Link to="/" id="Nav-tab">
+                  <Link to="/grole" id="Nav-tab">
                     Users-Info
                   </Link>
                   <Link id="Nav-tab">|</Link>
-                  <Link to="/roles" id="Nav-tab">
+                  <Link to="/grole/roles" id="Nav-tab">
                     {' '}
                     Roles-Users
                   </Link>
                   <Link id="Nav-tab">|</Link>
-                  <Link to="/permissions" id="Nav-tab">
+                  <Link to="/grole/privileges" id="Nav-tab">
                     {' '}
                     Permissions
                   </Link>
@@ -112,7 +112,7 @@ class App extends Component {
 
             <Switch>
               <Route
-                path="/"
+                path="/grole"
                 exact
                 render={(props) => (
                   <Users
@@ -128,7 +128,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/roles"
+                path="/grole/roles"
                 render={(props) => (
                   <Roles
                     rolesObj={rolesObj}
@@ -139,9 +139,14 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/permissions"
+                path="/grole/privileges"
                 render={(props) => (
-                  <Permissions permissionsObj={permissionsObj} {...props} />
+                  <Permissions
+                    permissionsObj={permissionsObj}
+                    pageSelector={this.pageSelector}
+                    pageNumber={this.state.pageNumber}
+                    {...props}
+                  />
                 )}
               />
             </Switch>
@@ -160,7 +165,7 @@ class App extends Component {
         this.setState({
           usersObj: allusers,
         });
-        console.log('Loaded - all Users: ', this.state.usersObj);
+        // console.log('Loaded - all Users: ', this.state.usersObj);
       });
   }
 
@@ -171,17 +176,17 @@ class App extends Component {
         this.setState({
           rolesObj: allroles,
         });
-        //  console.log('Loaded - all Roles: ', this.state.rolesObj);
+        // console.log('Loaded - all Roles: ', this.state.rolesObj);
       });
   }
   getPermissions() {
-    fetch(`${process.env.REACT_APP_API_URL}/permissions`)
+    fetch(`${process.env.REACT_APP_API_URL}/privileges`)
       .then((response) => response.json())
       .then((allpermissions) => {
         this.setState({
           permissionsObj: allpermissions,
         });
-        //  console.log('Loaded - all Permissions: ', this.state.permissionsObj);
+        // console.log('Loaded - all Permissions: ', this.state.permissionsObj);
       });
   }
 }

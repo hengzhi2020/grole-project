@@ -13,22 +13,24 @@ export default function Users(props) {
   // console.log("usersObj passing to User-componenent: ", props.usersObj);
   // console.log("selected page number is ", props.pageNumber);
 
-  const usersNumOnePage = 12;
-  const totalPages = Math.ceil(props.usersObj.length / usersNumOnePage);
+  const NumOfItemsShownOnPage = 12;
+  const totalPages = Math.ceil(
+    props.usersObj.all_users.length / NumOfItemsShownOnPage
+  );
   let usersList;
 
   if (!!props.usersObj) {
-    usersList = props.usersObj.map((item, i) => {
+    usersList = props.usersObj.all_users.map((item, i) => {
       //  console.log("i = ", i);
       if (
-        (props.pageNumber - 1) * usersNumOnePage <= i &&
-        i < props.pageNumber * usersNumOnePage
+        (props.pageNumber - 1) * NumOfItemsShownOnPage <= i &&
+        i < props.pageNumber * NumOfItemsShownOnPage
       ) {
         return (
           <Table.Row key={i}>
-            <Table.Cell>{item.login}</Table.Cell>
+            <Table.Cell>{item.id}</Table.Cell>
             <Table.Cell>
-              {item.node_id}
+              {item.username}
               <Popup
                 content={
                   <Table basic="very" celled collapsing>
@@ -81,11 +83,11 @@ export default function Users(props) {
                 trigger={<Button className="mini compact button" icon="add" />}
               />
             </Table.Cell>
-            <Table.Cell>{item.type}</Table.Cell>
-            <Table.Cell>{item.login}</Table.Cell>
-            <Table.Cell>{item.type}</Table.Cell>
+            <Table.Cell>{item.email}</Table.Cell>
+            <Table.Cell>{item.href}</Table.Cell>
             <Table.Cell>{item.id}</Table.Cell>
-            <Table.Cell>{item.node_id}</Table.Cell>
+            <Table.Cell>{item.id}</Table.Cell>
+            <Table.Cell>{item.id}</Table.Cell>
             <Table.Cell>{item.id}</Table.Cell>
             <Table.Cell>
               <a href="" id="Nav-tab">
