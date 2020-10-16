@@ -39,7 +39,7 @@ class Account(Base):
     updated_date = Column(DateTime, unique=False, nullable=True)
     user_id = Column(Integer, ForeignKey('user.id'))
     users = relationship("User", back_populates='accounts')
-    roles = relationship("Role", secondary='account_role_association', back_populates="accounts")
+    roles = relationship("Role", secondary='account_role', back_populates="accounts")
     
     def __str__(self):
         return str(self.id) + ": " + self.type + ":  " +  self.uid + " (" + self.va_nt_account + ")"
@@ -52,7 +52,7 @@ class Role(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(50), unique=True, nullable=False)
     description = Column(String(400), unique=False, nullable=True)
-    accounts = relationship("Account", secondary='account_role_association', back_populates="roles")
+    accounts = relationship("Account", secondary='account_role', back_populates="roles")
     # move to AccessList?
     access_list_id = Column(Integer, ForeignKey('access_list.id'))
     access_list = relationship("Access_List", back_populates='role', uselist = False) #one-to-one
@@ -64,9 +64,9 @@ class Role(Base):
         return "(" + str(self.id) + ":" + self.name + ")"
 
 # Association table for many-to-many accounts/roles:
-account_role_association = Table('account_role_association', Base.metadata,
-                         Column('account_id', Integer, ForeignKey('account.id')),
-                         Column('role_id', Integer, ForeignKey('role.id'))
+account_role = Table('account_role', Base.metadata,
+                     Column('account_id', Integer, ForeignKey('account.id')),
+                     Column('role_id', Integer, ForeignKey('role.id'))
 )
 
 
