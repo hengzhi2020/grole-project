@@ -43,7 +43,7 @@ class App extends Component {
       // console.log('input for search by button-click: ', this.state.searchInput);
 
       const userFilteredResult = this.state.usersObj.filter((item) =>
-        item.node_id.toLowerCase().includes(this.state.searchInput)
+        item.username.toLowerCase().includes(this.state.searchInput)
       );
       // console.log('userFilteredResult is', userFilteredResult);
 
@@ -57,6 +57,7 @@ class App extends Component {
 
   render() {
     const { usersObj, userFilteredObj, rolesObj, permissionsObj } = this.state;
+    // console.log('userFilteredObj = ', userFilteredObj);
 
     if (usersObj && rolesObj && permissionsObj) {
       return (
@@ -163,7 +164,7 @@ class App extends Component {
       .then((response) => response.json())
       .then((allusers) => {
         this.setState({
-          usersObj: allusers,
+          usersObj: allusers.all_users,
         });
         // console.log('Loaded - all Users: ', this.state.usersObj);
       });
@@ -174,7 +175,7 @@ class App extends Component {
       .then((response) => response.json())
       .then((allroles) => {
         this.setState({
-          rolesObj: allroles,
+          rolesObj: allroles.all_roles,
         });
         // console.log('Loaded - all Roles: ', this.state.rolesObj);
       });
@@ -184,7 +185,7 @@ class App extends Component {
       .then((response) => response.json())
       .then((allpermissions) => {
         this.setState({
-          permissionsObj: allpermissions,
+          permissionsObj: allpermissions.all_privileges,
         });
         // console.log('Loaded - all Permissions: ', this.state.permissionsObj);
       });

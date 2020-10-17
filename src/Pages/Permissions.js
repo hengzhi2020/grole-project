@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab, Table, Menu, Pagination } from 'semantic-ui-react';
+import { Table, Menu, Pagination } from 'semantic-ui-react';
 import './Permissions.css';
 
 export default function Permissions(props) {
@@ -7,13 +7,13 @@ export default function Permissions(props) {
 
   const NumOfItemsShownOnPage = 12;
   const totalPages = Math.ceil(
-    props.permissionsObj.all_privileges.length / NumOfItemsShownOnPage
+    props.permissionsObj.length / NumOfItemsShownOnPage
   );
 
   let permissionsList;
 
   if (!!props.permissionsObj) {
-    permissionsList = props.permissionsObj.all_privileges.map((item, i) => {
+    permissionsList = props.permissionsObj.map((item, i) => {
       if (
         (props.pageNumber - 1) * NumOfItemsShownOnPage <= i &&
         i < props.pageNumber * NumOfItemsShownOnPage

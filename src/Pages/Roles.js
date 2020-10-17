@@ -6,13 +6,11 @@ export default function Roles(props) {
   // console.log('rolesObj passing to Roles-componenent: ', props.rolesObj);
 
   const NumOfItemsShownOnPage = 12;
-  const totalPages = Math.ceil(
-    props.rolesObj.all_roles.length / NumOfItemsShownOnPage
-  );
+  const totalPages = Math.ceil(props.rolesObj.length / NumOfItemsShownOnPage);
   let rolesList;
 
   if (!!props.rolesObj) {
-    rolesList = props.rolesObj.all_roles.map((item, i) => {
+    rolesList = props.rolesObj.map((item, i) => {
       if (
         (props.pageNumber - 1) * NumOfItemsShownOnPage <= i &&
         i < props.pageNumber * NumOfItemsShownOnPage

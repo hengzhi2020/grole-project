@@ -14,13 +14,12 @@ export default function Users(props) {
   // console.log("selected page number is ", props.pageNumber);
 
   const NumOfItemsShownOnPage = 12;
-  const totalPages = Math.ceil(
-    props.usersObj.all_users.length / NumOfItemsShownOnPage
-  );
+  const totalPages = Math.ceil(props.usersObj.length / NumOfItemsShownOnPage);
+
   let usersList;
 
   if (!!props.usersObj) {
-    usersList = props.usersObj.all_users.map((item, i) => {
+    usersList = props.usersObj.map((item, i) => {
       //  console.log("i = ", i);
       if (
         (props.pageNumber - 1) * NumOfItemsShownOnPage <= i &&
