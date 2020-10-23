@@ -28,8 +28,12 @@ export default function Users(props) {
         return (
           <Table.Row key={i}>
             <Table.Cell>{item.id}</Table.Cell>
+            <Table.Cell>{item.username}</Table.Cell>
+            <Table.Cell>{item.email}</Table.Cell>
+            <Table.Cell>{item.href}</Table.Cell>
+            <Table.Cell>{item.id}</Table.Cell>
             <Table.Cell>
-              {item.username}
+              Acc_{item.id}
               <Popup
                 content={
                   <Table basic="very" celled collapsing>
@@ -37,44 +41,127 @@ export default function Users(props) {
                       <Table.Row>
                         <Table.Cell>
                           <Header as="h4">
-                            <Header.Content>Role</Header.Content>
+                            <Header.Content>AccType</Header.Content>
                           </Header>
                         </Table.Cell>
-                        <Table.Cell>
-                          {' '}
-                          <ol>
-                            <li>Systems architect</li>
-                            <li>System Administrator</li>
-                            <li>Web Developer</li>
-                          </ol>
-                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
                       </Table.Row>
 
                       <Table.Row>
                         <Table.Cell>
                           <Header as="h4">
-                            <Header.Content>Support</Header.Content>
+                            <Header.Content>Created</Header.Content>
                           </Header>
                         </Table.Cell>
-                        <Table.Cell>'{item.support}'</Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
                       </Table.Row>
 
                       <Table.Row>
                         <Table.Cell>
                           <Header as="h4">
-                            <Header.Content>Presenter</Header.Content>
+                            <Header.Content>Updated</Header.Content>
                           </Header>
                         </Table.Cell>
-                        <Table.Cell>'{item.project_presenter}'</Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
                       </Table.Row>
 
                       <Table.Row>
                         <Table.Cell>
                           <Header as="h4">
-                            <Header.Content>CreateTime</Header.Content>
+                            <Header.Content>Status</Header.Content>
                           </Header>
                         </Table.Cell>
-                        <Table.Cell>'{item.created_at}'</Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
+                  </Table>
+                }
+                trigger={<Button className="mini compact button" icon="add" />}
+              />
+              , Acc_{item.id + 1}
+              <Popup
+                content={
+                  <Table basic="very" celled collapsing>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>AccType</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Created</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Updated</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Status</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
+                  </Table>
+                }
+                trigger={<Button className="mini compact button" icon="add" />}
+              />
+              , Acc_{item.id + 2}
+              <Popup
+                content={
+                  <Table basic="very" celled collapsing>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>AccType</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Created</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Updated</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Status</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
                       </Table.Row>
                     </Table.Body>
                   </Table>
@@ -82,20 +169,142 @@ export default function Users(props) {
                 trigger={<Button className="mini compact button" icon="add" />}
               />
             </Table.Cell>
-            <Table.Cell>{item.email}</Table.Cell>
-            <Table.Cell>{item.href}</Table.Cell>
-            <Table.Cell>{item.id}</Table.Cell>
-            <Table.Cell>{item.id}</Table.Cell>
-            <Table.Cell>{item.id}</Table.Cell>
-            <Table.Cell>{item.id}</Table.Cell>
             <Table.Cell>
-              <a href="" id="Nav-tab">
-                Details
-              </a>{' '}
-              |{' '}
-              <a href="" id="Nav-tab">
-                History
-              </a>
+              Role_{item.id}
+              <Popup
+                content={
+                  <Table basic="very" celled collapsing>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>RoleType</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Created</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Updated</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Status</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
+                  </Table>
+                }
+                trigger={<Button className="mini compact button" icon="add" />}
+              />
+              , Role_{item.id + 1}
+              <Popup
+                content={
+                  <Table basic="very" celled collapsing>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>RoleType</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Created</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Updated</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Status</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
+                  </Table>
+                }
+                trigger={<Button className="mini compact button" icon="add" />}
+              />
+              , Role_{item.id + 2}
+              <Popup
+                content={
+                  <Table basic="very" celled collapsing>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>RoleType</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Created</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Updated</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as="h4">
+                            <Header.Content>Status</Header.Content>
+                          </Header>
+                        </Table.Cell>
+                        <Table.Cell>{'hard-coded'}</Table.Cell>
+                      </Table.Row>
+                    </Table.Body>
+                  </Table>
+                }
+                trigger={<Button className="mini compact button" icon="add" />}
+              />
             </Table.Cell>
           </Table.Row>
         );
@@ -111,16 +320,14 @@ export default function Users(props) {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>
-              <p className="table-header">User_ID</p>
+              <p className="table-header">UserID</p>
             </Table.HeaderCell>
-            <Table.HeaderCell>User_Name</Table.HeaderCell>
-            <Table.HeaderCell>User_Email</Table.HeaderCell>
-            <Table.HeaderCell>User_Affiliation</Table.HeaderCell>
-            <Table.HeaderCell>User_Type</Table.HeaderCell>
-            <Table.HeaderCell>Account_Type</Table.HeaderCell>
-            <Table.HeaderCell>Account_Created</Table.HeaderCell>
-            <Table.HeaderCell>Account_Updated</Table.HeaderCell>
-            <Table.HeaderCell>More information</Table.HeaderCell>
+            <Table.HeaderCell>UserName</Table.HeaderCell>
+            <Table.HeaderCell>Email</Table.HeaderCell>
+            <Table.HeaderCell>Affiliation</Table.HeaderCell>
+            <Table.HeaderCell>Type</Table.HeaderCell>
+            <Table.HeaderCell>Accounts</Table.HeaderCell>
+            <Table.HeaderCell>Roles</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
