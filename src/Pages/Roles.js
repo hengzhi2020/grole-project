@@ -35,12 +35,12 @@ export default function Roles(props) {
     <Table singleLine>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>User Name</Table.HeaderCell>
-          <Table.HeaderCell>Full Name</Table.HeaderCell>
-          <Table.HeaderCell>Company Name</Table.HeaderCell>
-          <Table.HeaderCell>E-mail address</Table.HeaderCell>
-          <Table.HeaderCell>Phone Number</Table.HeaderCell>
-          <Table.HeaderCell>Registration Date</Table.HeaderCell>
+          <Table.HeaderCell>UserName</Table.HeaderCell>
+          <Table.HeaderCell>FullName</Table.HeaderCell>
+          <Table.HeaderCell>Affiliation</Table.HeaderCell>
+          <Table.HeaderCell>Email</Table.HeaderCell>
+          <Table.HeaderCell>Created</Table.HeaderCell>
+          <Table.HeaderCell>Updated</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
 
@@ -70,7 +70,7 @@ export default function Roles(props) {
     {
       menuItem: (
         <Menu.Item key="Systems Architect">
-          <p className="item-selected">Systems Architect</p>
+          <p className="item-selected">Role_List_01</p>
         </Menu.Item>
       ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
@@ -78,7 +78,7 @@ export default function Roles(props) {
     {
       menuItem: (
         <Menu.Item key="System Administrator">
-          <p className="item-selected">System Administrator</p>
+          <p className="item-selected">Role_List_02</p>
         </Menu.Item>
       ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
@@ -86,7 +86,7 @@ export default function Roles(props) {
     {
       menuItem: (
         <Menu.Item key="Research Director">
-          <p className="item-selected">Research Director</p>
+          <p className="item-selected">Role_List_03</p>
         </Menu.Item>
       ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
@@ -94,7 +94,7 @@ export default function Roles(props) {
     {
       menuItem: (
         <Menu.Item key="Project Manager">
-          <p className="item-selected">Project Manager</p>
+          <p className="item-selected">Role_List_04</p>
         </Menu.Item>
       ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
@@ -102,7 +102,7 @@ export default function Roles(props) {
     {
       menuItem: (
         <Menu.Item key="Web Developer">
-          <p className="item-selected">Web Developer</p>
+          <p className="item-selected">Role_List_05</p>
         </Menu.Item>
       ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
@@ -110,7 +110,7 @@ export default function Roles(props) {
     {
       menuItem: (
         <Menu.Item key="VA MVP User">
-          <p className="item-selected">MVP User</p>
+          <p className="item-selected">Role_List_06</p>
         </Menu.Item>
       ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
@@ -118,7 +118,7 @@ export default function Roles(props) {
     {
       menuItem: (
         <Menu.Item key="VA Non-MVP User">
-          <p className="item-selected">VA User</p>
+          <p className="item-selected">Role_List_07</p>
         </Menu.Item>
       ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
@@ -126,7 +126,23 @@ export default function Roles(props) {
     {
       menuItem: (
         <Menu.Item key="Regular User">
-          <p className="item-selected">Non-VA User</p>
+          <p className="item-selected">Role_List_08</p>
+        </Menu.Item>
+      ),
+      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
+    },
+    {
+      menuItem: (
+        <Menu.Item key="Regular User">
+          <p className="item-selected">Role_List_09</p>
+        </Menu.Item>
+      ),
+      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
+    },
+    {
+      menuItem: (
+        <Menu.Item key="Regular User">
+          <p className="item-selected">Role_List_10</p>
         </Menu.Item>
       ),
       render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
