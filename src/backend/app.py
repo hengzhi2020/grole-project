@@ -180,6 +180,22 @@ def get_roles_for_user(user_id):
     ret_roles = [{"id": r.id, "name": r.name, "description":r.description} for r in roles]
     return(jsonify({"roles" : ret_roles}))
 
+#get all roles for all users, organized by account
+@app.route(api_path + '/users/roles/by_account', methods=['GET'])
+def get_roles_for_all_users_by_account():
+    all_users = session.query(User).all()
+    all  = defaultdict()
+    for user in all_users:
+        roles = defaultdict()
+        for a in user.accounts:
+            roles[a.va_nt_account] = []
+            for r in a.roles:
+                roles[a.va_nt_account].append({"id": r.id, "name": r.name, "description":r.description})
+        if len(roles) == 0:
+            roles = "NONE"
+        all[user.username] = roles
+    return(jsonify({"all_users_roles_by_account" : all}))
+
 #get all roles for a user, organized by account
 @app.route(api_path + '/users/roles/by_account/<int:user_id>', methods=['GET'])
 def get_roles_for_user_by_account(user_id):
