@@ -5,6 +5,7 @@ curl -i    http://localhost:4996/grole/api/v0.1/users/1
 curl -i    http://localhost:4996/grole/api/v0.1/users/accounts/3
 curl -i    http://localhost:4996/grole/api/v0.1/users/roles/3
 curl -i    http://localhost:4996/grole/api/v0.1/users/roles/by_account/3
+curl -i    http://localhost:4996/grole/api/v0.1/users/roles/by_account
 curl -i    http://localhost:4996/grole/api/v0.1/users/privileges/3
 curl -i    http://localhost:4996/grole/api/v0.1/users/privileges/by_account_and_role/3
 curl -i    http://localhost:4996/grole/api/v0.1/users/resources/3

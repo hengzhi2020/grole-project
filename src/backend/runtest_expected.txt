@@ -5,7 +5,7 @@ Content-Type: application/json
 Content-Length: 954
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:12:54 GMT
+Date: Mon, 26 Oct 2020 20:47:46 GMT
 
 {
   "all_users": [
@@ -60,7 +60,7 @@ Content-Type: application/json
 Content-Length: 251
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:12:55 GMT
+Date: Mon, 26 Oct 2020 20:47:47 GMT
 
 {
   "all_users_URL": [
@@ -80,7 +80,7 @@ Content-Type: application/json
 Content-Length: 91
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:12:56 GMT
+Date: Mon, 26 Oct 2020 20:47:48 GMT
 
 {
   "user": {
@@ -98,7 +98,7 @@ Content-Type: application/json
 Content-Length: 148
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:12:58 GMT
+Date: Mon, 26 Oct 2020 20:47:50 GMT
 
 {
   "accounts": [
@@ -117,7 +117,7 @@ Content-Type: application/json
 Content-Length: 112
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:12:59 GMT
+Date: Mon, 26 Oct 2020 20:47:51 GMT
 
 {
   "roles": [
@@ -135,7 +135,7 @@ Content-Type: application/json
 Content-Length: 150
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:00 GMT
+Date: Mon, 26 Oct 2020 20:47:52 GMT
 
 {
   "roles_by_account": {
@@ -149,36 +149,137 @@ Date: Thu, 15 Oct 2020 15:13:00 GMT
   }
 }
 TEST 8:
+curl -i http://localhost:4996/grole/api/v0.1/users/roles/by_account
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 1730
+Access-Control-Allow-Origin: *
+Server: Werkzeug/1.0.1 Python/3.7.1
+Date: Mon, 26 Oct 2020 20:47:53 GMT
+
+{
+  "all_users_roles_by_account": {
+    "DJL1": {
+      "vhabhsdjl1": [
+        {
+          "description": "project 2", 
+          "id": 2, 
+          "name": "windows admin"
+        }, 
+        {
+          "description": "project 3", 
+          "id": 3, 
+          "name": "windows net admin"
+        }
+      ]
+    }, 
+    "DJL2": {
+      "vhabhsdjl2": [
+        {
+          "description": "project 1", 
+          "id": 1, 
+          "name": "linux admin"
+        }
+      ], 
+      "vhabhsdjl3": [
+        {
+          "description": "project 4", 
+          "id": 4, 
+          "name": "genisis user"
+        }
+      ]
+    }, 
+    "DJL3": {
+      "vhabhsdjl5": [
+        {
+          "description": "project 1", 
+          "id": 1, 
+          "name": "linux admin"
+        }
+      ]
+    }, 
+    "DJL4": {
+      "vhabhsdjl4": [
+        {
+          "description": "project 4", 
+          "id": 4, 
+          "name": "genisis user"
+        }
+      ]
+    }, 
+    "DJL5": "NONE", 
+    "DJL6": {
+      "vhabhsdjl6": [
+        {
+          "description": "project 1", 
+          "id": 1, 
+          "name": "linux admin"
+        }
+      ], 
+      "vhabhsdjl7": [
+        {
+          "description": "project 5", 
+          "id": 5, 
+          "name": "NetApp admin"
+        }
+      ], 
+      "vhabhsdjl8": [
+        {
+          "description": "project 6", 
+          "id": 6, 
+          "name": "HPC admin"
+        }
+      ]
+    }, 
+    "DJL7": {
+      "vhabhsdjl10": [
+        {
+          "description": "project 6", 
+          "id": 6, 
+          "name": "HPC admin"
+        }
+      ], 
+      "vhabhsdjl9": [
+        {
+          "description": "project 6", 
+          "id": 6, 
+          "name": "HPC admin"
+        }
+      ]
+    }
+  }
+}
+TEST 9:
 curl -i http://localhost:4996/grole/api/v0.1/users/privileges/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 225
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:01 GMT
+Date: Mon, 26 Oct 2020 20:47:54 GMT
 
 {
   "privs": [
     {
-      "description": "server 010 file read", 
-      "id": 2, 
-      "name": "d010-read"
-    }, 
-    {
       "description": "server 001 file write", 
       "id": 1, 
       "name": "d001-write"
+    }, 
+    {
+      "description": "server 010 file read", 
+      "id": 2, 
+      "name": "d010-read"
     }
   ]
 }
-TEST 9:
+TEST 10:
 curl -i http://localhost:4996/grole/api/v0.1/users/privileges/by_account_and_role/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 374
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:02 GMT
+Date: Mon, 26 Oct 2020 20:47:55 GMT
 
 {
   "privileges_by_account_role": {
@@ -200,14 +301,14 @@ Date: Thu, 15 Oct 2020 15:13:02 GMT
     ]
   }
 }
-TEST 10:
+TEST 11:
 curl -i http://localhost:4996/grole/api/v0.1/users/resources/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 118
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:03 GMT
+Date: Mon, 26 Oct 2020 20:47:56 GMT
 
 {
   "resources": [
@@ -219,14 +320,14 @@ Date: Thu, 15 Oct 2020 15:13:03 GMT
     }
   ]
 }
-TEST 11:
+TEST 12:
 curl -i http://localhost:4996/grole/api/v0.1/users/resources/by_account_role_privilege/6
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 980
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:05 GMT
+Date: Mon, 26 Oct 2020 20:47:58 GMT
 
 {
   "resources_by_account_role_priv": {
@@ -285,14 +386,14 @@ Date: Thu, 15 Oct 2020 15:13:05 GMT
     ]
   }
 }
-TEST 12:
+TEST 13:
 curl -i http://localhost:4996/grole/api/v0.1/accounts
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 2197
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:06 GMT
+Date: Mon, 26 Oct 2020 20:47:59 GMT
 
 {
   "all_accounts": [
@@ -378,14 +479,14 @@ Date: Thu, 15 Oct 2020 15:13:06 GMT
     }
   ]
 }
-TEST 13:
+TEST 14:
 curl -i http://localhost:4996/grole/api/v0.1/accounts/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 212
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:07 GMT
+Date: Mon, 26 Oct 2020 20:48:00 GMT
 
 {
   "account": {
@@ -397,14 +498,14 @@ Date: Thu, 15 Oct 2020 15:13:07 GMT
     "va_nt_account": "vhabhsdjl2"
   }
 }
-TEST 14:
+TEST 15:
 curl -i http://localhost:4996/grole/api/v0.1/roles
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 739
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:08 GMT
+Date: Mon, 26 Oct 2020 20:48:01 GMT
 
 {
   "all_roles": [
@@ -446,14 +547,14 @@ Date: Thu, 15 Oct 2020 15:13:08 GMT
     }
   ]
 }
-TEST 15:
+TEST 16:
 curl -i http://localhost:4996/grole/api/v0.1/roles/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 95
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:09 GMT
+Date: Mon, 26 Oct 2020 20:48:02 GMT
 
 {
   "Role": {
@@ -462,14 +563,14 @@ Date: Thu, 15 Oct 2020 15:13:09 GMT
     "name": "windows admin"
   }
 }
-TEST 16:
+TEST 17:
 curl -i http://localhost:4996/grole/api/v0.1/roles/accounts/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 175
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:10 GMT
+Date: Mon, 26 Oct 2020 20:48:03 GMT
 
 {
   "accounts_for_role": [
@@ -481,14 +582,14 @@ Date: Thu, 15 Oct 2020 15:13:10 GMT
     }
   ]
 }
-TEST 17:
+TEST 18:
 curl -i http://localhost:4996/grole/api/v0.1/roles/users/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 125
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:11 GMT
+Date: Mon, 26 Oct 2020 20:48:04 GMT
 
 {
   "users_for_role": [
@@ -499,14 +600,14 @@ Date: Thu, 15 Oct 2020 15:13:11 GMT
     }
   ]
 }
-TEST 18:
+TEST 19:
 curl -i http://localhost:4996/grole/api/v0.1/privileges
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 1225
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:12 GMT
+Date: Mon, 26 Oct 2020 20:48:05 GMT
 
 {
   "all_privileges": [
@@ -560,14 +661,14 @@ Date: Thu, 15 Oct 2020 15:13:12 GMT
     }
   ]
 }
-TEST 19:
+TEST 20:
 curl -i http://localhost:4996/grole/api/v0.1/privileges/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 107
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:13 GMT
+Date: Mon, 26 Oct 2020 20:48:06 GMT
 
 {
   "privilege": {
@@ -576,14 +677,14 @@ Date: Thu, 15 Oct 2020 15:13:13 GMT
     "name": "d010-read"
   }
 }
-TEST 20:
+TEST 21:
 curl -i http://localhost:4996/grole/api/v0.1/privileges/roles/3
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 74
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:14 GMT
+Date: Mon, 26 Oct 2020 20:48:07 GMT
 
 {
   "role_having_priv": {
@@ -591,14 +692,14 @@ Date: Thu, 15 Oct 2020 15:13:14 GMT
     "name": "windows admin"
   }
 }
-TEST 21:
+TEST 22:
 curl -i http://localhost:4996/grole/api/v0.1/resources
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 588
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:15 GMT
+Date: Mon, 26 Oct 2020 20:48:08 GMT
 
 {
   "all_resources": [
@@ -632,14 +733,14 @@ Date: Thu, 15 Oct 2020 15:13:15 GMT
     }
   ]
 }
-TEST 22:
+TEST 23:
 curl -i http://localhost:4996/grole/api/v0.1/resources/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 96
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:16 GMT
+Date: Mon, 26 Oct 2020 20:48:09 GMT
 
 {
   "resource": {
@@ -649,14 +750,14 @@ Date: Thu, 15 Oct 2020 15:13:16 GMT
     "site": "PTH"
   }
 }
-TEST 23:
+TEST 24:
 curl -i http://localhost:4996/grole/api/v0.1/resources/users/2
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 129
 Access-Control-Allow-Origin: *
 Server: Werkzeug/1.0.1 Python/3.7.1
-Date: Thu, 15 Oct 2020 15:13:17 GMT
+Date: Mon, 26 Oct 2020 20:48:10 GMT
 
 {
   "users_for_resource": [
@@ -667,7 +768,7 @@ Date: Thu, 15 Oct 2020 15:13:17 GMT
     }
   ]
 }
-TEST 24:
+TEST 25:
 curl -X PUT http://localhost:4996/grole/api/v0.1/roles/privileges/4/5
 {
   "priv_added_to_role": {
@@ -675,7 +776,7 @@ curl -X PUT http://localhost:4996/grole/api/v0.1/roles/privileges/4/5
     "role_updated": 4
   }
 }
-TEST 25:
+TEST 26:
 curl -X DELETE http://localhost:4996/grole/api/v0.1/privileges/2
 {
   "privilege_deleted": 2
