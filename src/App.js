@@ -78,16 +78,16 @@ class App extends Component {
 
               <nav className="Nav-style">
                 <div>
-                  <Link to="/grole" id="Nav-tab">
+                  <Link to={process.env.REACT_APP_BASE_PATH} id="Nav-tab">
                     Users-Info
                   </Link>
-                  <Link id="Nav-tab">|</Link>
-                  <Link to="/grole/roles" id="Nav-tab">
+                  |
+                  <Link to={process.env.REACT_APP_BASE_PATH + "/roles"} id="Nav-tab">
                     {' '}
                     Roles-Users
                   </Link>
-                  <Link id="Nav-tab">|</Link>
-                  <Link to="/grole/privileges" id="Nav-tab">
+                  |
+                  <Link to={process.env.REACT_APP_BASE_PATH + "/privileges"} id="Nav-tab">
                     {' '}
                     Permissions
                   </Link>
@@ -113,7 +113,7 @@ class App extends Component {
 
             <Switch>
               <Route
-                path="/grole"
+                path={process.env.REACT_APP_BASE_PATH}
                 exact
                 render={(props) => (
                   <Users
@@ -129,7 +129,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/grole/roles"
+                path={process.env.REACT_APP_BASE_PATH + "/roles"}
                 render={(props) => (
                   <Roles
                     rolesObj={rolesObj}
@@ -140,7 +140,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/grole/privileges"
+                path={process.env.REACT_APP_BASE_PATH + "/privileges"}
                 render={(props) => (
                   <Permissions
                     permissionsObj={permissionsObj}

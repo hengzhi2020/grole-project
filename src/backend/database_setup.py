@@ -18,7 +18,10 @@ Base = declarative_base()
 
 # creates a create_engine instance at the bottom of the file
 db_uri = getenv('DB_URI', 'sqlite:///GROLE_data.db')
-engine = create_engine(db_uri, connect_args={'check_same_thread': False})
+connect_args = {}
+if db_uri.startswith('sqlite'):
+    connect_args['check_same_thread'] = False
+engine = create_engine(db_uri, connect_args=connect_args)
 Base.metadata.bind = engine 
 #Base.metadata.create_all(engine)
 
