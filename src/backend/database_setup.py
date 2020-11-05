@@ -13,11 +13,11 @@ if db_uri.startswith('sqlite'):
     connect_args['check_same_thread'] = False
 engine = create_engine(db_uri, connect_args=connect_args)
 session_factory = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Session = scoped_session(session_factory)
+session = scoped_session(session_factory)
 
 # create declarative_base instance
 Base = declarative_base()
-Base.query = Session.query_property()
+Base.query = session.query_property()
 
 def init_db():
     # import all modules here that might define models so that

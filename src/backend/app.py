@@ -14,7 +14,7 @@ if getenv('FLASK_ENV', 'development') == 'development':
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import exc
-from database_setup import init_db, Base, Session
+from database_setup import init_db, Base, session
 
 from models import User, Account, Role, Access_List, Privilege, Resource
 
@@ -27,7 +27,6 @@ from models import User, Account, Role, Access_List, Privilege, Resource
 #Base.metadata.bind = engine
 #Base.metadata.create_all(engine) ###
 init_db()
-session = Session()
 
 base_path = getenv('BASE_PATH', '/grole')
 api_path = base_path + '/api/v0.1'
@@ -678,7 +677,7 @@ def dummy_return(fname):
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
-    Session.remove()
+    session.remove()
 
 if __name__ == '__main__':
     app.debug = True
