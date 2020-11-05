@@ -1,12 +1,12 @@
-from flask import Flask, jsonify, abort, make_response, request, url_for, render_template
+from flask import Flask, jsonify, abort, make_response, request, url_for, render_template, send_from_directory
 from flask_cors import CORS
 from sqlalchemy.ext.declarative import declarative_base ##
 from datetime import datetime
 from collections import defaultdict
-from os import getenv
+from os import getenv, path
 
 
-app = Flask(__name__, static_folder="../../build/static", template_folder="../../build")
+app = Flask(__name__, static_folder='../../build', static_url_path='/', template_folder='../../build')
 if getenv('FLASK_ENV', 'development') == 'development':
     CORS(app)
 
@@ -37,6 +37,10 @@ api_path = base_path + '/api/v0.1'
 @app.route(base_path)
 def landing():
     return render_template('index.html')
+
+@app.route(base_path + '/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(app.static_folder, filename)
 
 # landing page
 @app.route(api_path)
