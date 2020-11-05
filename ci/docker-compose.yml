@@ -20,7 +20,7 @@ services:
     depends_on:
       - grole-db
     environment:
-      BASE_PATH: /grole
+      REACT_APP_BASE_PATH: /grole
       DB_URI: mysql+mysqldb://grole_user:password@mysql-db/grole
       FLASK_ENV: production
     ports:
