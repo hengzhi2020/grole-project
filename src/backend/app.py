@@ -14,7 +14,7 @@ if getenv('FLASK_ENV', 'development') == 'development':
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import exc
-from database_setup import Base, engine
+from database_setup import init_db, Base, Session
 
 from models import User, Account, Role, Access_List, Privilege, Resource
 
@@ -26,9 +26,8 @@ from models import User, Account, Role, Access_List, Privilege, Resource
 #engine = create_engine('sqlite:///GROLE_data.db')
 #Base.metadata.bind = engine
 #Base.metadata.create_all(engine) ###
-
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
+init_db()
+session = Session()
 
 base_path = getenv('BASE_PATH', '/grole')
 api_path = base_path + '/api/v0.1'
@@ -676,7 +675,10 @@ def bad_request(error):
 # for dev
 def dummy_return(fname):
     return make_response(jsonify({"NOT IMPLEMENTED" : fname}), 404)
-    
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    Session.remove()
 
 if __name__ == '__main__':
     app.debug = True

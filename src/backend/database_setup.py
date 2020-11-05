@@ -1,19 +1,9 @@
 from os import getenv
-
-# for creating the mapper code
-from sqlalchemy import Column, ForeignKey, Integer, String
-
 # for configuration and class code
 from sqlalchemy.ext.declarative import declarative_base
-
-# for creating foreign key relationship between the tables
-from sqlalchemy.orm import relationship
-
+from sqlalchemy.orm import sessionmaker, scoped_session
 # for configuration
 from sqlalchemy import create_engine
-
-# create declarative_base instance
-Base = declarative_base()
 
 
 # creates a create_engine instance at the bottom of the file
@@ -22,6 +12,17 @@ connect_args = {}
 if db_uri.startswith('sqlite'):
     connect_args['check_same_thread'] = False
 engine = create_engine(db_uri, connect_args=connect_args)
-Base.metadata.bind = engine 
-#Base.metadata.create_all(engine)
+session_factory = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Session = scoped_session(session_factory)
+
+# create declarative_base instance
+Base = declarative_base()
+Base.query = Session.query_property()
+
+def init_db():
+    # import all modules here that might define models so that
+    # they will be registered properly on the metadata.  Otherwise
+    # you will have to import them first before calling init_db()
+    import models
+    Base.metadata.create_all(bind=engine)
 
