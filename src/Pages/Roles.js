@@ -84,7 +84,7 @@ export default function Roles(props) {
             options={rolesList}
             defaultValue={rolesList[0].value}
           />
-          {' to Display Users'}
+          {' for Users'}
         </span>
       </div>
       {exampleTable}
