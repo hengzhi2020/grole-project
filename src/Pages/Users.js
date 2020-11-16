@@ -1,4 +1,5 @@
 import React from 'react';
+import { Input } from 'semantic-ui-react';
 import './Users.css';
 import {
   Table,
@@ -316,6 +317,21 @@ export default function Users(props) {
 
   return (
     <div>
+      <div className="filter-at-top-right">
+        <Input
+          id="input-for-filter"
+          type="text"
+          icon="search"
+          size="mini"
+          placeholder="Type in user name"
+          onChange={props.searchUserName}
+        />
+
+        <button type="button" id="btn-filter" onClick={props.getSearchResult}>
+          Username Filter
+        </button>
+      </div>
+
       <Table celled selectable striped>
         <Table.Header>
           <Table.Row>

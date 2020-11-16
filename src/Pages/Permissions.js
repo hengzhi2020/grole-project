@@ -37,8 +37,8 @@ export default function Permissions(props) {
       <Table striped>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>PermID</Table.HeaderCell>
-            <Table.HeaderCell>PermName</Table.HeaderCell>
+            <Table.HeaderCell>Perm_ID</Table.HeaderCell>
+            <Table.HeaderCell>Perm_Name</Table.HeaderCell>
             <Table.HeaderCell>Description</Table.HeaderCell>
             <Table.HeaderCell>Ref_Link</Table.HeaderCell>
           </Table.Row>

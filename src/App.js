@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Input } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import './App.css';
 import Users from './Pages/Users';
@@ -78,45 +78,31 @@ class App extends Component {
 
               <nav className="Nav-style">
                 <div>
-                  <Link to={process.env.REACT_APP_BASE_PATH} id="Nav-tab">
+                  <Link to="/grole" id="Nav-tab">
                     Users-Info
                   </Link>
-                  |
-                  <Link to={process.env.REACT_APP_BASE_PATH + "/roles"} id="Nav-tab">
+                  <Link id="Nav-tab"></Link>
+                  <Link to="/grole/roles" id="Nav-tab">
                     {' '}
                     Roles-Users
                   </Link>
-                  |
-                  <Link to={process.env.REACT_APP_BASE_PATH + "/privileges"} id="Nav-tab">
+                  <Link id="Nav-tab">|</Link>
+                  <Link to="/grole/privileges" id="Nav-tab">
                     {' '}
                     Permissions
                   </Link>
                 </div>
               </nav>
-
-              <Input
-                id="input-for-filter"
-                type="text"
-                icon="search"
-                size="mini"
-                placeholder="Input User_Name"
-                onChange={this.searchUserName}
-              />
-              <button
-                type="button"
-                id="btn-filter"
-                onClick={this.getSearchResult}
-              >
-                Username Filter
-              </button>
             </div>
 
             <Switch>
               <Route
-                path={process.env.REACT_APP_BASE_PATH}
+                path="/grole"
                 exact
                 render={(props) => (
                   <Users
+                    searchUserName={this.searchUserName}
+                    getSearchResult={this.getSearchResult}
                     usersObj={
                       !!this.state.searchInput && !!userFilteredObj
                         ? userFilteredObj
@@ -129,7 +115,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path={process.env.REACT_APP_BASE_PATH + "/roles"}
+                path="/grole/roles"
                 render={(props) => (
                   <Roles
                     rolesObj={rolesObj}
@@ -140,7 +126,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path={process.env.REACT_APP_BASE_PATH + "/privileges"}
+                path="/grole/privileges"
                 render={(props) => (
                   <Permissions
                     permissionsObj={permissionsObj}

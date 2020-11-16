@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab, Table, Menu, Pagination } from 'semantic-ui-react';
+import { Table, Menu, Icon, Dropdown, Pagination } from 'semantic-ui-react';
 import './Roles.css';
 
 export default function Roles(props) {
@@ -7,10 +7,17 @@ export default function Roles(props) {
 
   const NumOfItemsShownOnPage = 12;
   const totalPages = Math.ceil(props.rolesObj.length / NumOfItemsShownOnPage);
-  let rolesList;
+  let roleUsers;
+  let rolesList = [];
 
   if (!!props.rolesObj) {
-    rolesList = props.rolesObj.map((item, i) => {
+    props.rolesObj.map((item, i) => {
+      rolesList.push({ key: i, text: item.name, value: item.name });
+    });
+  }
+
+  if (!!props.rolesObj) {
+    roleUsers = props.rolesObj.map((item, i) => {
       if (
         (props.pageNumber - 1) * NumOfItemsShownOnPage <= i &&
         i < props.pageNumber * NumOfItemsShownOnPage
@@ -44,7 +51,7 @@ export default function Roles(props) {
         </Table.Row>
       </Table.Header>
 
-      <Table.Body>{rolesList}</Table.Body>
+      <Table.Body>{roleUsers}</Table.Body>
 
       <Table.Footer>
         <Table.Row>
@@ -66,95 +73,21 @@ export default function Roles(props) {
     </Table>
   );
 
-  const panes = [
-    {
-      menuItem: (
-        <Menu.Item key="Systems Architect">
-          <p className="item-selected">Role_List_01</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-    {
-      menuItem: (
-        <Menu.Item key="System Administrator">
-          <p className="item-selected">Role_List_02</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-    {
-      menuItem: (
-        <Menu.Item key="Research Director">
-          <p className="item-selected">Role_List_03</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-    {
-      menuItem: (
-        <Menu.Item key="Project Manager">
-          <p className="item-selected">Role_List_04</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-    {
-      menuItem: (
-        <Menu.Item key="Web Developer">
-          <p className="item-selected">Role_List_05</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-    {
-      menuItem: (
-        <Menu.Item key="VA MVP User">
-          <p className="item-selected">Role_List_06</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-    {
-      menuItem: (
-        <Menu.Item key="VA Non-MVP User">
-          <p className="item-selected">Role_List_07</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-    {
-      menuItem: (
-        <Menu.Item key="Regular User">
-          <p className="item-selected">Role_List_08</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-    {
-      menuItem: (
-        <Menu.Item key="Regular User">
-          <p className="item-selected">Role_List_09</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-    {
-      menuItem: (
-        <Menu.Item key="Regular User">
-          <p className="item-selected">Role_List_10</p>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane>{exampleTable}</Tab.Pane>,
-    },
-  ];
-
   return (
     <div>
-      <Tab
-        menu={{ fluid: false, vertical: false, tabular: true }}
-        panes={panes}
-      />
+      <div className="selector-at-top-right">
+        <span>
+          {'Select Role '}
+          <Dropdown
+            id="role-dropdown"
+            inline
+            options={rolesList}
+            defaultValue={rolesList[0].value}
+          />
+          {' to Display Users'}
+        </span>
+      </div>
+      {exampleTable}
     </div>
   );
 }
